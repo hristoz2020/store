@@ -31,3 +31,11 @@ export const getAllCategories = async () => {
 
     return categories;
 }
+
+export const getProductByCategories = async (category) => {
+    let response = await fetch(`${baseUrl}/products/category/${category}`)
+
+    let products = response.json();
+
+    return products;
+}

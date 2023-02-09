@@ -5,7 +5,6 @@
 
 body {
     background-color: #d0e8e8;
-    
 }
 
 .store {
@@ -15,12 +14,12 @@ body {
 .navigation {
     display: flex;
     justify-content: flex-start;
-    background-color: #2fcc68;
+    background-color: #5b5858;
     padding: 10px;
 }
 
 .nav-btn {
-    background-color: #4CAF50;
+    background-color: #818481;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -30,7 +29,7 @@ body {
 }
 
 .navigation>a:hover {    
-    background-color: #61f196;
+    background-color: #5b5858;
 }
 
 .home-page>h1 {

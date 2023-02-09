@@ -1,17 +1,12 @@
-import { Link } from 'react-router-dom';
 
-const CategoriesContainer = ({category}) => {
-   
-    
-    return (
-        <>
-            <li>
-                <Link to={`${category}`}>
-                    {category}
-                </Link>
-            </li>
-        </>
-    );
-}
+const CategoriesContainer = ({ category }) => {
+
+
+	return (
+		<>
+			<option value={`${category}`}>{category}</option>			
+		</>
+	);
+};
 
 export default CategoriesContainer;
