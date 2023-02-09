@@ -4,8 +4,7 @@ import Navigation from "./Components/Navigation/Navigation";
 import Home from './Components/Pages/Home/Home';
 import AllProducts from './Components/Pages/AllProducts/AllProducts';
 import Categories from './Components/Pages/Categories/Categories';
-import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
 	return (
