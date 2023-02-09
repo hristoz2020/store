@@ -15,9 +15,14 @@ const Home = () => {
     
 	return (
 		<>
-			{products.map((x) => (
-                <CardContainer key={x.id} product={x} />
-            ))}
+			<div className="home-page">
+				<h1>Wellcome 'user' to store!</h1>
+				<ul className="card-list">
+					{products.map((x) => (
+						<CardContainer key={x.id} product={x} />
+						))}
+				</ul>
+			</div>
 		</>
 	);
 };

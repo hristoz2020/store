@@ -9,7 +9,7 @@ export const getAllProducts = async () => {
 };
 
 export const getLimitProducts = async () => {
-	let response = await fetch(`${baseUrl}/products?limit=5`)
+	let response = await fetch(`${baseUrl}/products?limit=10`)
 
     let limitetProducts = response.json();
 

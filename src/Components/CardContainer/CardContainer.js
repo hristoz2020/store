@@ -1,11 +1,11 @@
 const CardContainer = ({ product }) => {
 	return (
-		<div className="card-container">
+		<li className="card-container">
 			<img className="product-img" src={product.image} alt="product" />
-			<h2>{product.title}</h2>
-			<p>{product.description}</p>
-			<p>{product.price}$</p>
-		</div>
+			<h2 className="product-title">{product.title}</h2>
+			<p className="product-descriptio">{product.description}</p>
+			<p className="product-price">{product.price}$</p>
+		</li>
 	);
 };
 
