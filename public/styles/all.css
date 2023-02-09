@@ -89,11 +89,12 @@ body {
 }
 
 .details-card {
+    display: flex;
     border: 1px solid black;
+    border-radius: 12px;
     background-color: white;
     width: 80%;
     margin: 100px auto;
-    display: flex;
 }
 
 .details-card-img {
@@ -111,4 +112,11 @@ body {
 .details-card-description,
 .details-card-price {
     padding: 5px 0px;
+}
+
+.categories-page {
+    background-color: white;
+}
+.categories-page>h1 {
+    text-align: center;
 }

@@ -23,3 +23,11 @@ export const getOneProduct = async (productId) => {
 
     return product;
 };
+
+export const getAllCategories = async () => {
+    let response = await fetch(`${baseUrl}/products/categories`)
+
+    let categories = response.json();
+
+    return categories;
+}
