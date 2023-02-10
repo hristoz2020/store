@@ -39,3 +39,11 @@ export const getProductByCategories = async (category) => {
 
     return products;
 }
+
+export const getAscOeDescProducts = async (type) => {
+    let response = await fetch(`${baseUrl}/products?sort=${type}`)
+
+    let products = response.json();
+
+    return products;
+}
