@@ -24,23 +24,23 @@ const Details = () => {
 	}, [productId]);
 
 	return (
-		<div className="details-card">
+		<>
 			{loading 
 				? <Loader />
-				: <>
-					<img className="details-card-img left" src={product.image} alt="product" />
-					<div className="details-card-info right">
-						<h3 className="details-card-title">Title: {product.title}</h3>
-						<p className="details-card-category">Category: {product.category}</p>
-						<p className="details-card-description">Description: {product.description}</p>
-						<p className="details-card-price">Price: {product.price}BGN</p>
+				: 	<div className="details-card">
+					<img className="details-card-img" src={product.image} alt="product" />
+					<div className="details-card-info">
+						<h4 className="details-card-category">{product.category}</h4>
+						<h2 className="details-card-title">{product.title}</h2>
 						<p className="">Rating: {product?.rating?.rate}</p>
+						<h3 className="details-card-price">{product.price}BGN</h3>
+						<p className="details-card-description">{product.description}</p>
 					</div>
-				</>
+				</div>
 			} 
 			{error && <p>Error!!</p>}
 			
-		</div>
+		</>
 	);
 };
 

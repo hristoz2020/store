@@ -7,7 +7,7 @@ const AllProducts = () => {
 	const [products, setProducts] = useState([]);
 	const [sortBy, setSortBy] = useState("desc");
 	const [loading, setLoading] = useState(true);
-	// const [searchInput, setSearchInput] = useState('');
+	const [searchInput, setSearchInput] = useState('');
 	const checkSortBy = sortBy === "desc" ? "asc" : "desc";
 
 	useEffect(() => {
@@ -21,19 +21,20 @@ const AllProducts = () => {
 			});
 	}, [sortBy]);
 
-	// function onSearch(e) {
-	// 	e.preventDefault();
+	function onSearch(e) {
+		e.preventDefault();
+		setSearchInput(e.target.value);
 
-	// 	let formData = new FormData(e.currentTarget);
-	// 	let searchByText = formData.get('name');
-	// 	setSearchInput(searchByText);
-
-	// 	if (searchInput.length > 0) {
-	// 		products.filter((product) => {
-	// 			return	product.title.searchInput
-	// 		})
-	// 	}
-	// }
+		if (searchInput.length > 0) {
+			let filtredProducts = products.filter((product) => {
+				return	product.title.toLowerCase().includes(searchInput.toLowerCase())
+			});
+			setProducts(filtredProducts);
+		} else if (searchInput.length === 0) {
+			setProducts(products)
+			console.log('test');
+		}
+	};
 
 	return (
 		<div className="all-products-page">
@@ -47,13 +48,10 @@ const AllProducts = () => {
 						<button onClick={() => setSortBy(checkSortBy)}>
 							{checkSortBy}
 						</button>
-						{/* <form onSubmit={(e) => onSearch(e)}>
-							<label>
-								<input type="text" name="name" />
-							</label>
-							<input type="submit" value="Search" />
-						</form> */}
 					</div>
+					<label className="search-item">
+						<input type="text" value={searchInput} placeholder="Search..." onChange={(e) => onSearch(e)}/>
+					</label>
 					<ul className="card-list">
 						{products.map((x) => (
 							<CardContainer key={x.id} product={x} button={x} />
