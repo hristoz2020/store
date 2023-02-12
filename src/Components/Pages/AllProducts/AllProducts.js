@@ -7,7 +7,7 @@ const AllProducts = () => {
 	const [products, setProducts] = useState([]);
 	const [sortBy, setSortBy] = useState("desc");
 	const [loading, setLoading] = useState(true);
-	const [searchInput, setSearchInput] = useState('');
+	const [searchInput, setSearchInput] = useState("");
 	const checkSortBy = sortBy === "desc" ? "asc" : "desc";
 
 	useEffect(() => {
@@ -24,17 +24,7 @@ const AllProducts = () => {
 	function onSearch(e) {
 		e.preventDefault();
 		setSearchInput(e.target.value);
-
-		if (searchInput.length > 0) {
-			let filtredProducts = products.filter((product) => {
-				return	product.title.toLowerCase().includes(searchInput.toLowerCase())
-			});
-			setProducts(filtredProducts);
-		} else if (searchInput.length === 0) {
-			setProducts(products)
-			console.log('test');
-		}
-	};
+	}
 
 	return (
 		<div className="all-products-page">
@@ -50,12 +40,34 @@ const AllProducts = () => {
 						</button>
 					</div>
 					<label className="search-item">
-						<input type="text" value={searchInput} placeholder="Search..." onChange={(e) => onSearch(e)}/>
+						<input
+							type="text"
+							value={searchInput}
+							placeholder="Search..."
+							onChange={(e) => onSearch(e)}
+						/>
 					</label>
 					<ul className="card-list">
-						{products.map((x) => (
-							<CardContainer key={x.id} product={x} button={x} />
-						))}
+						{products
+							.filter((product) => {
+								if (searchInput === "") {
+									return product;
+								} else if (
+									product.title
+										.toLowerCase()
+										.includes(searchInput.toLowerCase())
+								) {
+									return product;
+								}
+							})
+							.map((x) => (
+								<CardContainer
+									key={x.id}
+									product={x}
+									button={x}
+								/>
+								// TODO: add message if no products found with this name!
+							))}
 					</ul>
 				</>
 			)}
