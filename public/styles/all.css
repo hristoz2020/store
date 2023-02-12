@@ -90,6 +90,7 @@ body {
 
 .details-card {
     display: flex;
+    justify-content: center;
     border: 1px solid black;
     border-radius: 12px;
     background-color: white;
@@ -124,6 +125,7 @@ body {
     border-radius: 50%;
     width: 80px;
     height: 80px;
+    margin: 15% auto;
     animation: spin 1s linear infinite;
 }
 

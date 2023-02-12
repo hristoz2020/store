@@ -1,49 +1,55 @@
-const baseUrl = 'https://fakestoreapi.com';
+const baseUrl = "https://fakestoreapi.com";
+const header = {
+	headers: {
+        'Content-Type': 'application/json',
+		'Access-Control-Allow-Origin': 'no-cors',
+	},
+};
 
 export const getAllProducts = async () => {
-	let response = await fetch(`${baseUrl}/products`)
+	let response = await fetch(`${baseUrl}/products`, header);
 
-    let allProducts = response.json();
+	let allProducts = response.json();
 
-    return allProducts;
+	return allProducts;
 };
 
 export const getLimitProducts = async () => {
-	let response = await fetch(`${baseUrl}/products?limit=5`)
+	let response = await fetch(`${baseUrl}/products?limit=5`, header);
 
-    let limitetProducts = response.json();
+	let limitetProducts = response.json();
 
-    return limitetProducts;
+	return limitetProducts;
 };
 
 export const getOneProduct = async (productId) => {
-	let response = await fetch(`${baseUrl}/products/${productId}`)
+	let response = await fetch(`${baseUrl}/products/${productId}`, header);
 
-    let product = response.json();
+	let product = response.json();
 
-    return product;
+	return product;
 };
 
 export const getAllCategories = async () => {
-    let response = await fetch(`${baseUrl}/products/categories`)
+	let response = await fetch(`${baseUrl}/products/categories`, header);
 
-    let categories = response.json();
+	let categories = response.json();
 
-    return categories;
-}
+	return categories;
+};
 
 export const getProductByCategories = async (category) => {
-    let response = await fetch(`${baseUrl}/products/category/${category}`)
+	let response = await fetch(`${baseUrl}/products/category/${category}`, header);
 
-    let products = response.json();
+	let products = response.json();
 
-    return products;
-}
+	return products;
+};
 
-export const getAscOeDescProducts = async (type) => {
-    let response = await fetch(`${baseUrl}/products?sort=${type}`)
+export const getAscOrDescProducts = async (type) => {
+	let response = await fetch(`${baseUrl}/products?sort=${type}`, header);
 
-    let products = response.json();
+	let products = response.json();
 
-    return products;
-}
+	return products;
+};

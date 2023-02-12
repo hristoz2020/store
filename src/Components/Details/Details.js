@@ -4,8 +4,8 @@ import * as ProductService from "../../Services/ProductServices";
 import Loader from "../Loader/Loader";
 
 const Details = () => {
-    const [loading, setLoading] = useState(true);
 	const [product, setProduct] = useState({});
+    const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
 	const location = useLocation();
