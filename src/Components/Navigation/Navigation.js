@@ -14,6 +14,11 @@ const Navigation = () => {
 			<Link to="/categories" className="nav-btn">
 				Categories
 			</Link>
+
+			<Link to="/cart" className="nav-btn">
+			<i className="far fa-meh-rolling-eyes"></i>
+				Cart
+			</Link>
 		</div>
 	);
 };

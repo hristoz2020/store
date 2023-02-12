@@ -39,14 +39,16 @@ const Categories = () => {
 			) : (
 				<>
 					<h1>Selected Products</h1>
-					<label>
-						Category:
-						<select onChange={(e) => {setSelectedCategory(e.target.value)}}>
-							{category.map((x) => (
-								<CategoriesContainer key={x} category={x} />
-							))}
-						</select>
-					</label>
+					<div className="categories-select">
+						<h3>Category:</h3>
+						<label>
+							<select onChange={(e) => {setSelectedCategory(e.target.value)}}>
+								{category.map((x) => (
+									<CategoriesContainer key={x} category={x} />
+								))}
+							</select>
+						</label>
+					</div>
 					<div>
 						<ul className="card-list">
 							{products.map((x) => (

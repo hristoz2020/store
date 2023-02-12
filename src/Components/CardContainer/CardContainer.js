@@ -6,12 +6,11 @@ const CardContainer = ({ product, button }) => {
 		<li className="card-container">
 			<img className="product-img" src={product.image} alt="product" />
 			<h3 className="product-title">{product.title}</h3>
-			<div className="product-footer">
-				<p className="product-category left">{product.category}</p>
-				<p className="product-price right">{product.price}$</p>
-			</div>
+			<p className="product-category">{product.category}</p>
+			<p className="product-price">{product.price} BGN</p>
+
 			{button
-				? <Link to={`/all-products/details/${product.id}`} state={product} className="details">
+				? <Link to={`/all-products/details/${product.id}`} state={product} className="details-btn">
 					Details
 				</Link>
 				: ''
