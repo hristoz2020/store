@@ -19,6 +19,10 @@ const Navigation = () => {
 			<i className="far fa-meh-rolling-eyes"></i>
 				Cart
 			</Link>
+
+			<Link to="/login" className="nav-btn">
+				Login
+			</Link>
 		</div>
 	);
 };
