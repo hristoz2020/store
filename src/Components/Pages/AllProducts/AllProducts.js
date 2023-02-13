@@ -26,6 +26,8 @@ const AllProducts = () => {
 		setSearchInput(e.target.value);
 	}
 
+	let filtredProducts = products.filter((product) => product.title.toLowerCase().includes(searchInput.toLowerCase()));
+
 	return (
 		<div className="all-products-page">
 			{loading ? (
@@ -48,26 +50,19 @@ const AllProducts = () => {
 						/>
 					</label>
 					<ul className="card-list">
-						{products
-							.filter((product) => {
-								if (searchInput === "") {
-									return product;
-								} else if (
-									product.title
-										.toLowerCase()
-										.includes(searchInput.toLowerCase())
-								) {
-									return product;
-								}
-							})
-							.map((x) => (
+						{filtredProducts.length > 0 ? (
+							filtredProducts.map((x) => (
 								<CardContainer
 									key={x.id}
 									product={x}
 									button={x}
 								/>
-								// TODO: add message if no products found with this name!
-							))}
+							))
+						) : (
+							<h3 className="not-found-product">
+								Not found product with this name!
+							</h3>
+						)}
 					</ul>
 				</>
 			)}
