@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import * as ProductService from "../../Services/ProductServices";
+import * as ProductService from "../../services/ProductServices";
 import Loader from "../Loader/Loader";
 
 const Details = () => {

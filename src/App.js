@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 
-import Navigation from "./Components/Navigation/Navigation";
-import Home from './Components/Pages/Home/Home';
-import AllProducts from './Components/Pages/AllProducts/AllProducts';
-import Categories from './Components/Pages/Categories/Categories';
-import Details from './Components/Details/Details';
-import Cart from "./Components/Pages/Cart/Cart";
-import Login from "./Components/Pages/Login/Login";
+import Navigation from "./components/Navigation/Navigation";
+import Home from './components/Pages/Home/Home';
+import AllProducts from './components/Pages/AllProducts/AllProducts';
+import Categories from './components/Pages/Categories/Categories';
+import Details from './components/Details/Details';
+import Cart from "./components/Pages/Cart/Cart";
+import Login from "./components/Pages/Login/Login";
 
 function App() {
 	return (
@@ -14,7 +14,7 @@ function App() {
             <Navigation />
 
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" exact element={<Home />} />
                 <Route path="/all-products" element={<AllProducts />} />
                 <Route path="/all-products/details/:id" element={<Details />} />
                 <Route path="/categories" element={<Categories />} />

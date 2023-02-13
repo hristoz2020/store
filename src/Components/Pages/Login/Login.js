@@ -1,26 +1,56 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import * as AuthService from "../../../services/AuthService";
 
 const Login = () => {
+    const [isSign, setIsSign] = useState(false);
+	const navigate = useNavigate();
 
-    function onSubmit(e) {
-        e.preventDefault();
+	const onSubmit = (e) => {
+		e.preventDefault();
 
-        let formData = new FormData(e.currentTarget);
+		let formData = new FormData(e.currentTarget);
 
-        let email = formData.get('email');
-        let password = formData.get('password');
-    }
+		let email = formData.get("email");
+		let password = formData.get("password");
+        
+		AuthService.getAllUsers().then((authData) => {
+			authData.forEach((el) => {
+                console.log(el);
+				if (el.email === email && el.password === password) {
+                    setIsSign(true);
+                } 
+			});
 
-    return (
-        <form className="login-form" onSubmit={onSubmit} method="POST">
-            <label htmlFor="email">
-                <input type="text" name="email" id="email" placeholder="Name..." />
-            </label>
-            <label>
-                <input type="password" name="password" id="password" placeholder="Password..." />
-            </label>
-            <button>Login</button>
-        </form>
-    );
-}
+			navigate('/');
+		});
+	};
+    console.log(isSign);
+	return (
+		<form className="login-form" onSubmit={onSubmit} method="POST">
+			<h3>Sign In</h3>
+			<label>
+				Email addres
+				<input
+					type="text"
+					name="email"
+					id="email"
+					placeholder="Enter email"
+				/>
+			</label>
+			<label>
+				Password
+				<input
+					type="password"
+					name="password"
+					id="password"
+					placeholder="Enter password"
+				/>
+			</label>
+			<button>Login</button>
+		</form>
+	);
+};
 
 export default Login;

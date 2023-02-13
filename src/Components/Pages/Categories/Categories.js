@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as ProductServices from "../../../Services/ProductServices";
+import * as ProductServices from "../../../services/ProductServices";
 import CategoriesContainer from "../../CategoriesContainer/CategoriesContainer";
 import CardContainer from "../../CardContainer/CardContainer";
 import Loader from "../../Loader/Loader";
