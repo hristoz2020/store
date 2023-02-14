@@ -169,3 +169,16 @@ body {
 .not-found-product {
     padding: 50px;
 }
+
+.login-form {
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 12px;
+    margin: 50px auto;
+    padding: 50px;
+    width: 40%;
+}
+
+.login-form>div {
+    padding: 10px;
+}

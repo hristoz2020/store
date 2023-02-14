@@ -1,10 +1,6 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import * as AuthService from "../../../services/AuthService";
-
 const Login = () => {
-    const [isSign, setIsSign] = useState(false);
 	const navigate = useNavigate();
 
 	const onSubmit = (e) => {
@@ -14,23 +10,21 @@ const Login = () => {
 
 		let email = formData.get("email");
 		let password = formData.get("password");
-        
-		AuthService.getAllUsers().then((authData) => {
-			authData.forEach((el) => {
-                console.log(el);
-				if (el.email === email && el.password === password) {
-                    setIsSign(true);
-                } 
-			});
 
-			navigate('/');
-		});
+		if (
+			/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
+			password.length > 6
+		) {
+			localStorage.setItem("email", email);
+		
+			navigate("/");
+		}
 	};
-    console.log(isSign);
+
 	return (
 		<form className="login-form" onSubmit={onSubmit} method="POST">
 			<h3>Sign In</h3>
-			<label>
+			<div>
 				Email addres
 				<input
 					type="text"
@@ -38,8 +32,8 @@ const Login = () => {
 					id="email"
 					placeholder="Enter email"
 				/>
-			</label>
-			<label>
+			</div>
+			<div>
 				Password
 				<input
 					type="password"
@@ -47,7 +41,7 @@ const Login = () => {
 					id="password"
 					placeholder="Enter password"
 				/>
-			</label>
+			</div>
 			<button>Login</button>
 		</form>
 	);

@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {
+	const [isLogged, setisLogged] = useState(false);
+
+	useEffect(() => {
+		if (localStorage.getItem("email")) {
+			setisLogged(true);
+		}
+	}, []);
+
+	console.log(isLogged);
 	return (
 		<div className="navigation">
 			<Link to="/" className="nav-btn">
@@ -15,14 +25,18 @@ const Navigation = () => {
 				Categories
 			</Link>
 
-			<Link to="/cart" className="nav-btn">
-			<i className="far fa-meh-rolling-eyes"></i>
-				Cart
-			</Link>
-
-			<Link to="/login" className="nav-btn">
-				Login
-			</Link>
+			{isLogged ? (
+				<>
+					<Link to="/cart" className="nav-btn">
+						<i className="far fa-meh-rolling-eyes"></i>
+						Cart
+					</Link>
+				</>
+			) : (
+				<Link to="/login" className="nav-btn">
+					Login
+				</Link>
+			)}
 		</div>
 	);
 };
