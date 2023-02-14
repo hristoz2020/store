@@ -1,11 +1,17 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Logout = () => {
-    localStorage.removeItem('email');
+	const navigate = useNavigate();
 
-    return (
-        <>
-        </>
-    );
+    useEffect(() => {
+        localStorage.clear();
+
+        navigate('/');
+    }, [navigate]);
+
+
 }
 
 export default Logout;

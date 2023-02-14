@@ -16,7 +16,6 @@ const Login = () => {
 			password.length > 6
 		) {
 			localStorage.setItem("email", email);
-		
 			navigate("/");
 		}
 	};
