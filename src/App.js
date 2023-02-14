@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import * as AuthService from '../src/services/AuthService';
 
-import Navigation from "./components/Navigation/Navigation";
-import Home from "./components/Pages/Home/Home";
-import AllProducts from "./components/Pages/AllProducts/AllProducts";
-import Categories from "./components/Pages/Categories/Categories";
-import Details from "./components/Details/Details";
-import Cart from "./components/Pages/Cart/Cart";
-import Login from "./components/Pages/Login/Login";
-import Logout from "./components/Pages/Logout/Logout";
+import Navigation from "./Components/Navigation/Navigation";
+import Home from "./Components/Pages/Home/Home";
+import AllProducts from "./Components/Pages/AllProducts/AllProducts";
+import Categories from "./Components/Pages/Categories/Categories";
+import Details from "./Components/Details/Details";
+import Cart from "./Components/Pages/Cart/Cart";
+import Login from "./Components/Pages/Login/Login";
+import Logout from "./Components/Pages/Logout/Logout";
 
 function App() {
     const [userInfo, setUserInfo] = useState({isAuthenticated: false, username: ''});
