@@ -1,17 +1,7 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
-	const [isLogged, setisLogged] = useState(false);
+const Navigation = ({ isAuthenticated, user }) => {
 
-	useEffect(() => {
-		if (localStorage.getItem("email")) {
-			setisLogged(true);
-		}
-	}, [setisLogged]);
-
-	console.log(isLogged);
-    
 	const guestNav = (
 		<Link to="/login" className="nav-btn">
 			Login
@@ -41,7 +31,7 @@ const Navigation = () => {
 			<Link to="/categories" className="nav-btn">
 				Categories
 			</Link>
-			{isLogged 
+			{isAuthenticated
 				? 	userNav
 				:	guestNav
 			}

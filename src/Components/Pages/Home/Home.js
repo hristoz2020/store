@@ -3,10 +3,9 @@ import * as ProductServices from "../../../services/ProductServices";
 import CardContainer from "../../CardContainer/CardContainer";
 import Loader from "../../Loader/Loader";
 
-const Home = () => {
+const Home = ({user}) => {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState('');
 
 	useEffect(() => {
 		ProductServices.getLimitProducts()
@@ -17,12 +16,6 @@ const Home = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-			
-			if (localStorage.getItem('email')) {
-				setUser(localStorage
-				.getItem("email")
-				.slice(0, localStorage.getItem("email").indexOf("@")));
-			}
 	}, []);
 
 
@@ -33,7 +26,7 @@ const Home = () => {
 					<Loader />
 				) : (
 					<>
-						<h1>Wellcome {`${user}`} to store!</h1>
+						<h1>Wellcome {user} to store!</h1>
 						<ul className="card-list">
 							{products.map((x) => (
 								<CardContainer key={x.id} product={x} />

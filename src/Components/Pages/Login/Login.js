@@ -1,23 +1,22 @@
 import { useNavigate } from "react-router-dom";
+import * as AuthService from '../../../services/AuthService';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
 	const navigate = useNavigate();
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		let formData = new FormData(e.currentTarget);
-
+ 
 		let email = formData.get("email");
 		let password = formData.get("password");
-
-		if (
-			/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
-			password.length > 6
-		) {
-			localStorage.setItem("email", email);
+		// 	/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
+	
+			AuthService.login(email);
+			onLogin(email);
 			navigate("/");
-		}
+		
 	};
 
 	return (
