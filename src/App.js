@@ -7,6 +7,7 @@ import Categories from './components/Pages/Categories/Categories';
 import Details from './components/Details/Details';
 import Cart from "./components/Pages/Cart/Cart";
 import Login from "./components/Pages/Login/Login";
+import Logout from "./components/Pages/Logout/Logout";
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/categories" element={<Categories />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
             </Routes>
         </div>
     );
