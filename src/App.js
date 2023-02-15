@@ -8,6 +8,7 @@ import Categories from "./components/Pages/Categories/Categories";
 import Details from "./components/Details/Details";
 import Cart from "./components/Pages/Cart/Cart";
 import Login from "./components/Pages/Login/Login";
+import Register from "./components/Pages/Register/Register";
 
 
 function App() {
@@ -24,8 +25,11 @@ function App() {
 				<Route path="/categories" element={<Categories />} />
 				{token
 					? <Route path="/cart" element={<Cart />} />
-					: <Route path="/login" element={<Login token={token} setToken={setToken} />} />
-				}
+					: <>
+					<Route path="/login" element={<Login token={token} setToken={setToken} />} />
+					<Route path="/register" element={<Register />} />
+					</>
+				} 
 				
 			</Routes>
 		</div>
