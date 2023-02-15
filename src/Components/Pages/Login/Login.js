@@ -1,46 +1,66 @@
 import { useNavigate } from "react-router-dom";
-import * as AuthService from '../../../services/AuthService';
+import { useState } from "react";
 
-const Login = ({ onLogin }) => {
+const Login = ({token, setToken}) => {
 	const navigate = useNavigate();
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
 
-	const onSubmit = (e) => {
+	const loginHandler = (e) => {
 		e.preventDefault();
 
-		let formData = new FormData(e.currentTarget);
- 
-		let email = formData.get("email");
-		let password = formData.get("password");
-		// 	/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
-	
-			AuthService.login(email);
-			onLogin(email);
-			navigate("/");
-		
-	};
+		setError('');
+		setUsername('');
+		setPassword('');
+
+		fetch('https://fakestoreapi.com/auth/login',{
+			method:'POST',
+			headers:{
+				'Content-Type':'application/json'
+			},
+			body:JSON.stringify({
+				username:username,
+				password:password
+			})
+		})
+		.then(res=> res.json())
+		.then(res => {
+			setToken(res.token);
+			localStorage.setItem('userToken', res.token);
+		})
+		.catch(err => {
+			setError(err)
+			console.error(err.message)})
+		.finally(()=>{
+			navigate('/')
+		})
+	}
 
 	return (
-		<form className="login-form" onSubmit={onSubmit} method="POST">
+		<form className="login-form" method="POST">
 			<h3>Sign In</h3>
 			<div>
-				Email addres
+				Username
 				<input
+					value={username}
+					onChange={(e) => {setUsername(e.target.value)}}
 					type="text"
-					name="email"
-					id="email"
-					placeholder="Enter email"
+					placeholder="Username"
 				/>
 			</div>
 			<div>
 				Password
 				<input
+					value={password}
+					onChange={(e) => {setPassword(e.target.value)}}
 					type="password"
-					name="password"
-					id="password"
-					placeholder="Enter password"
+					placeholder="Password"
 				/>
 			</div>
-			<button>Login</button>
+			{error && <small>{error}</small>}
+			<button onClick={(e) => {loginHandler(e)}}>Login</button>
+			{error}
 		</form>
 	);
 };

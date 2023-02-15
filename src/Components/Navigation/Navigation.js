@@ -1,6 +1,12 @@
+// import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Navigation = ({ isAuthenticated, user }) => {
+const Navigation = ({token, setToken}) => {
+	console.log(token);
+	const logOutHandler = () => {
+		setToken('');
+		localStorage.clear();
+	}
 
 	const guestNav = (
 		<Link to="/login" className="nav-btn">
@@ -13,13 +19,12 @@ const Navigation = ({ isAuthenticated, user }) => {
 			<Link to="/cart" className="nav-btn">
 				Cart
 			</Link>
-			<Link to="/logout" className="nav-btn">
+			<button onClick={logOutHandler} className="nav-btn">
 				Logout
-			</Link>
+			</button>
 		</>
 	);
 
-	
 	return (
 		<div className="navigation">
 			<Link to="/" className="nav-btn">
@@ -31,9 +36,9 @@ const Navigation = ({ isAuthenticated, user }) => {
 			<Link to="/categories" className="nav-btn">
 				Categories
 			</Link>
-			{isAuthenticated
-				? 	userNav
-				:	guestNav
+			{token 
+				? userNav
+				: guestNav			
 			}
 		</div>
 	);
