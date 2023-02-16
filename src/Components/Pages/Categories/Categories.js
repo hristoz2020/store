@@ -4,7 +4,7 @@ import CategoriesContainer from "../../CategoriesContainer/CategoriesContainer";
 import CardContainer from "../../CardContainer/CardContainer";
 import Loader from "../../Loader/Loader";
 
-const Categories = () => {
+const Categories = ({token, handleClick}) => {
 	const [category, setCategories] = useState([]);
 	const [products, setProducts] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState("electronics");
@@ -55,7 +55,9 @@ const Categories = () => {
 								<CardContainer
 									key={x.id}
 									product={x}
-									button={x}
+									detailsBtn={x}
+									addToCartBtn={token}
+									handleClick={handleClick}
 								/>
 							))}
 						</ul>

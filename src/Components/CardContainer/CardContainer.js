@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CardContainer = ({ product, detailsBtn, addToCartBtn }) => {
-
-	const addToCart = () => {
-		let productId = product.id;
-		console.log(productId);
-	}
+const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick }) => {
 
 	return (
 		<li className="card-container">
@@ -29,7 +24,7 @@ const CardContainer = ({ product, detailsBtn, addToCartBtn }) => {
 					{addToCartBtn ? (
 						<button
 							onClick={() => {
-								addToCart();
+								handleClick(product);
 							}}
 							className="add-to-cart-btn"
 						>

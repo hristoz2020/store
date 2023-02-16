@@ -15,6 +15,7 @@ body {
 .navigation {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     border-bottom: 1px solid black;
     background-color: white;
     padding: 10px;
@@ -196,3 +197,127 @@ body {
 .login-form>div {
     padding: 10px;
 }
+
+.cart-no-products {
+    border: 1px solid black;
+    text-align: center;
+    padding: 200px 100px;
+    margin: 50px 0px;
+    height: 200px;
+}
+
+.cart-no-products>h2,
+.cart-no-products>p {
+    padding: 5px 0px;
+}
+
+.countinue-shoping {
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    margin: 10px auto;
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.selected-product-cart {
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+    border: 1px solid black;
+    padding: 0px 100px;
+}
+
+.cart {
+    cursor: pointer;
+  }
+  .cart span:nth-child(1) {
+    font-size: 2rem;
+    color: white;
+  }
+  .cart span:nth-child(2) {
+    padding: 0 3px;
+    background-color: red;
+    color: white;
+    font-weight: bolx;
+    border-radius: 5px;
+    position: relative;
+    top: -15px;
+    right: 15px;
+  }
+
+  article {
+    width: 60%;
+    margin: auto;
+  }
+  
+  .cart_box img {
+    width: 50px;
+    height: 50px;
+  }
+  .cart_img {
+    display: flex;
+    width: 400px;
+  }
+  
+  .cart_img p {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .cart_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-bottom: 2px solid skyblue;
+    padding-bottom: 5px;
+  }
+  
+  .cart_box div:nth-child(2) button {
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .cart_box div:nth-child(3) button {
+    padding: 5px 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: skyblue;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .cart_box div:nth-child(3) button:hover {
+    background-color: darkseagreen;
+  }
+  .cart_box div:nth-child(3) span {
+    background-color: lightgreen;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .total {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .total span:nth-child(1) {
+    font-size: 2rem;
+    color: skyblue;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .total span:nth-child(2) {
+    font-size: 2rem;
+    color: green;
+    font-weight: bold;
+  }

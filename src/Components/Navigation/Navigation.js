@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Navigation = ({ token, setToken }) => {
+const Navigation = ({ token, setToken, size }) => {
 	const navigate = useNavigate();
 
 	const logOutHandler = () => {
@@ -24,9 +24,12 @@ const Navigation = ({ token, setToken }) => {
 
 	const userNav = (
 		<>
-			<Link to="/cart" className="nav-btn">
-				Cart
-			</Link>
+			<div className="cart">
+				<Link to="/cart" className="nav-btn">
+					Cart
+				</Link>
+				<span>{size}</span>
+			</div>
 			<button onClick={logOutHandler} className="nav-btn">
 				Logout
 			</button>

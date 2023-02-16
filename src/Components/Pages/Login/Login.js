@@ -39,7 +39,6 @@ const Login = ({ token, setToken }) => {
 				console.log(err);
 			});
 	};
-	console.log(loading);
 
 	return (
 		<form className="login-form" method="POST">
