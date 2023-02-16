@@ -1,6 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const CardContainer = ({ product, button }) => {
+const CardContainer = ({ product, detailsBtn, addToCartBtn }) => {
+
+	const addToCart = () => {
+		let productId = product.id;
+		console.log(productId);
+	}
 
 	return (
 		<li className="card-container">
@@ -8,12 +13,32 @@ const CardContainer = ({ product, button }) => {
 			<h3 className="product-title">{product.title}</h3>
 			<p className="product-category">{product.category}</p>
 			<p className="product-price">{product.price} BGN</p>
-
-			{button
-				? <Link to={`/all-products/details/${product.id}`} state={product} className="details-btn">
-					Details
-				</Link>
-				: ''
+			{
+				<div className="card-container-buttons">
+					{detailsBtn ? (
+						<Link
+							to={`/all-products/details/${product.id}`}
+							state={product}
+							className="details-btn"
+						>
+							Details
+						</Link>
+					) : (
+						""
+					)}
+					{addToCartBtn ? (
+						<button
+							onClick={() => {
+								addToCart();
+							}}
+							className="add-to-cart-btn"
+						>
+							Add to cart
+						</button>
+					) : (
+						""
+					)}
+				</div>
 			}
 		</li>
 	);

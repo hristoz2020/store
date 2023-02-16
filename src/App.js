@@ -12,7 +12,7 @@ import Register from "./components/Pages/Register/Register";
 
 
 function App() {
-	const [token, setToken] = useState(localStorage.getItem("token") ?? null);//return string or object
+	const [token, setToken] = useState(localStorage.getItem("userToken") ?? null);//return string or object
 
 	return (
 		<div className="store">
@@ -20,7 +20,7 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/all-products" element={<AllProducts />} />
+				<Route path="/all-products" element={<AllProducts token={token} />} />
 				<Route path="/all-products/details/:id" element={<Details />} />
 				<Route path="/categories" element={<Categories />} />
 				{token

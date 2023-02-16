@@ -38,12 +38,6 @@ const Details = () => {
 					</div>
 				</div>
 			} 
-			{
-				<div className="buttons">
-					<button></button>
-					<button></button>
-				</div>
-			}
 			{error && <p>Error!!</p>}
 		</>
 	);

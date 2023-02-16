@@ -3,7 +3,7 @@ import * as ProductServices from "../../../services/productServices";
 import CardContainer from "../../CardContainer/CardContainer";
 import Loader from "../../Loader/Loader";
 
-const AllProducts = () => {
+const AllProducts = ({token}) => {
 	const [products, setProducts] = useState([]);
 	const [sortBy, setSortBy] = useState("desc");
 	const [loading, setLoading] = useState(true);
@@ -55,7 +55,8 @@ const AllProducts = () => {
 								<CardContainer
 									key={x.id}
 									product={x}
-									button={x}
+									detailsBtn={x}
+									addToCartBtn={token}
 								/>
 							))
 						) : (

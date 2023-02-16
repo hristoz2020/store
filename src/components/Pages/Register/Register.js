@@ -21,27 +21,33 @@ const Register = () => {
 		// setUsername('');
 		// setPassword('');
 
-		// fetch('https://fakestoreapi.com/auth/login',{
-		// 	method:'POST',
-		// 	headers:{
-		// 		'Content-Type':'application/json'
-		// 	},
-		// 	body:JSON.stringify({
-		// 		username:username,
-		// 		password:password
-		// 	})
-		// })
-		// .then(res=> res.json())
-		// .then(res => {
-		// 	setToken(res.token);
-		// 	localStorage.setItem('userToken', res.token);
-		// })
-		// .catch(err => {
-		// 	setError(err)
-		// 	console.error(err.message)})
-		// .finally(()=>{
-		// 	navigate('/')
-		// })
+		fetch('https://fakestoreapi.com/users',{
+            method:"POST",
+            body:JSON.stringify(
+                {
+                    email: email,
+                    username: username,
+                    password: password,
+                    name:{
+                        firstname: firstname,
+                        lastname: lastname
+                    },
+                    address:{
+                        city: city,
+                        street: street,
+                        number: number,
+                        zipcode: zipcode,
+                        geolocation:{
+                            lat: lat,
+                            long: long
+                        }
+                    },
+                    phone: phone
+                }
+            )
+        })
+            .then(res=>res.json())
+            .then(json=>console.log(json))
 	}
 
 
