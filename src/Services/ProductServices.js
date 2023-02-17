@@ -10,7 +10,7 @@ export const getAllProducts = async () => {
 	let response = await fetch(`${baseUrl}/products`, header);
 
 	let allProducts = response.json();
-
+	
 	return allProducts;
 };
 

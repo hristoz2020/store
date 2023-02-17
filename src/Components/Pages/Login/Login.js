@@ -42,40 +42,38 @@ const Login = ({ token, setToken }) => {
 
 	return (
 		<form className="login-form" method="POST">
-			<h3>Sign In</h3>
-			<div>
-				Username
-				<input
-					value={usernameInput}
-					onChange={(e) => {
-						setUsernameInput(e.target.value);
-					}}
-					type="text"
-					placeholder="Username"
-				/>
-			</div>
-			<div>
-				Password
-				<input
-					value={passwordInput}
-					onChange={(e) => {
-						setPasswordInput(e.target.value);
-					}}
-					type="password"
-					placeholder="Password"
-				/>
-			</div>
-			{loading 
-			? <Loader />
-			: <small>{error}</small> 
-			}
-			<button
-				onClick={(e) => {
-					loginHandler(e);
+			<h2>Login</h2>
+			<p>Username</p>
+			<input
+				value={usernameInput}
+				onChange={(e) => {
+					setUsernameInput(e.target.value);
 				}}
-			>
-				Login
-			</button>
+				className="form-input"
+				type="text"
+				placeholder="Username"
+			/>
+			<p>Password</p>
+			<input
+				value={passwordInput}
+				onChange={(e) => {
+					setPasswordInput(e.target.value);
+				}}
+				className="form-input"
+				type="password"
+				placeholder="Password"
+			/>
+			<div>
+				{loading ? <Loader /> : <small>{error}</small>}
+				<button
+					onClick={(e) => {
+						loginHandler(e);
+					}}
+					className="form-button"
+				>
+					Login
+				</button>
+			</div>
 		</form>
 	);
 };

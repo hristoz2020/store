@@ -21,13 +21,14 @@ const AllProducts = ({token, handleClick }) => {
 			});
 	}, [sortBy]);
 
+	products.map((x) => (x.amount = 1));
+	
 	function onSearch(e) {
 		e.preventDefault();
 		setSearchInput(e.target.value);
 	}
 
 	let filtredProducts = products.filter((product) => product.title.toLowerCase().includes(searchInput.toLowerCase()));
-
 	return (
 		<div className="all-products-page">
 			{loading ? (

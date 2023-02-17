@@ -31,7 +31,7 @@ const Categories = ({token, handleClick}) => {
 				console.log(err);
 			});
 	}, [selectedCategory]);
-
+	products.map(x => x.amount = 1);
 	return (
 		<div className="categories-page">
 			{loading ? (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navigation from "./components/Navigation/Navigation";
@@ -11,41 +11,31 @@ import Login from "./components/Pages/Login/Login";
 import Register from "./components/Pages/Register/Register";
 
 function App() {
+	const [cart, setCart] = useState([]);
 	const [token, setToken] = useState(
 		localStorage.getItem("userToken") ?? null
-	); //return string or object
-
-	const [cart, setCart] = useState([]);
-
+		);
+		
+	
+		
 	const handleClick = (item) => {
 		if (cart.indexOf(item) !== -1) return;
 		setCart([...cart, item]);
 	};
-
+	
 	const handleChange = (item, d) => {
 		const ind = cart.indexOf(item);
 		const arr = cart;
 		arr[ind].amount += d;
-
+		
 		if (arr[ind].amount === 0) arr[ind].amount = 1;
+		
 		setCart([...arr]);
 	};
-
-	useEffect(() => {
-		if(cart.length > 0) {
-			cart.map(x => (
-				x.amount = 1
-			))
-		}
-	}, [cart]);
-
+	
 	return (
 		<div className="store">
-			<Navigation
-				token={token}
-				setToken={setToken}
-				size={cart.length}
-			/>
+			<Navigation token={token} setToken={setToken} size={cart.length} />
 
 			<Routes>
 				<Route path="/" element={<Home />} />
