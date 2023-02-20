@@ -9,13 +9,13 @@ import Details from "./components/Details/Details";
 import Cart from "./components/Pages/Cart/Cart";
 import Login from "./components/Pages/Login/Login";
 import Register from "./components/Pages/Register/Register";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 	const [cart, setCart] = useState([]);
 	const [token, setToken] = useState(
 		localStorage.getItem("userToken") ?? null
 		);
-		
 	
 		
 	const handleClick = (item) => {
@@ -29,7 +29,6 @@ function App() {
 		arr[ind].amount += d;
 		
 		if (arr[ind].amount === 0) arr[ind].amount = 1;
-		
 		setCart([...arr]);
 	};
 	
@@ -83,6 +82,8 @@ function App() {
 					</>
 				)}
 			</Routes>
+
+			<Footer />
 		</div>
 	);
 }

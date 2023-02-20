@@ -8,7 +8,7 @@ const Navigation = ({ token, setToken, size }) => {
 	const logOutHandler = () => {
 		setToken("");
 		localStorage.clear();
-		navigate('/login');
+		navigate("/login");
 	};
 
 	const guestNav = (
@@ -38,16 +38,18 @@ const Navigation = ({ token, setToken, size }) => {
 
 	return (
 		<div className="navigation">
-			<Link to="/" className="nav-btn">
-				Home
-			</Link>
-			<Link to="/all-products" className="nav-btn">
-				All Products
-			</Link>
-			<Link to="/categories" className="nav-btn">
-				Categories
-			</Link>
-			{token ? userNav : guestNav}
+			<div className="navigation-left">
+				<Link to="/" className="nav-btn">
+					Home
+				</Link>
+				<Link to="/all-products" className="nav-btn">
+					All Products
+				</Link>
+				<Link to="/categories" className="nav-btn">
+					Categories
+				</Link>
+			</div>
+			<div className="navigation-right">{token ? userNav : guestNav}</div>
 		</div>
 	);
 };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import * as ProductService from "../../services/productServices";
 import Loader from "../Loader/Loader";
 
@@ -35,6 +35,9 @@ const Details = () => {
 						<p className="details-card-rating">Rating: {product?.rating?.rate}</p>
 						<h3 className="details-card-price">{product.price}BGN</h3>
 						<p className="details-card-description">{product.description}</p>
+						<Link to={'/all-products'} className='details-btn'>
+							Back to products
+						</Link>
 					</div>
 				</div>
 			} 

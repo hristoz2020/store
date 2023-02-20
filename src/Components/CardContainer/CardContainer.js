@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick }) => {
+	
 
 	return (
 		<li className="card-container">

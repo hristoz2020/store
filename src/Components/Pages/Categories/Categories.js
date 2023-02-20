@@ -32,6 +32,7 @@ const Categories = ({token, handleClick}) => {
 			});
 	}, [selectedCategory]);
 	products.map(x => x.amount = 1);
+	
 	return (
 		<div className="categories-page">
 			{loading ? (

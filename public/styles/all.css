@@ -14,11 +14,24 @@ body {
 
 .navigation {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
     border-bottom: 1px solid black;
     background-color: white;
     padding: 10px;
+}
+
+.navigation-left,
+.navigation-right {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navigation-left {
+    justify-content: start;
+}
+
+.navigation-right {
+    justify-content: end;
 }
 
 .nav-btn {
@@ -338,4 +351,20 @@ article {
     font-size: 2rem;
     color: black;
     font-weight: bold;
+}
+
+footer {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+.fa-brands {
+    font-size: 30px;
+    padding: 10px;
+    color: black;
+} 
+ 
+.icon-fakestoreapi {
+    height: 26px;
 }

@@ -20,8 +20,23 @@ const Cart = ({ cart, setCart, handleChange }) => {
 	useEffect(() => {
 		handlePrice();
 	});
+    console.log(cart, "this is cart");
+    const productAmount = cart.filter((product) => product.id === product.id)
+    console.log("productAmount",productAmount)
+    const filtredCart = cart.filter(
+        
+        
+        (obj, index) => cart.findIndex(item => item.id === obj.id) === index
+        // obj.amount === item.amount + obj.amount
+    );
 
-    return cart.length > 0 ? (
+    useEffect(() => {
+        setCart(filtredCart)
+    }, [setCart])
+
+    console.log(filtredCart, "this is filtred cart ");
+
+    return filtredCart.length > 0 ? (
 		<article>
 			{cart.map((item) => (
 				<div className="cart_box" key={item.id}>
