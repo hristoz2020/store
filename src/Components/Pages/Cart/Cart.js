@@ -20,24 +20,17 @@ const Cart = ({ cart, setCart, handleChange }) => {
 	useEffect(() => {
 		handlePrice();
 	});
-    console.log(cart, "this is cart");
-    const productAmount = cart.filter((product) => product.id === product.id)
-    console.log("productAmount",productAmount)
-    const filtredCart = cart.filter(
-        
-        
+   
+	const filtredCart = cart.filter(
         (obj, index) => cart.findIndex(item => item.id === obj.id) === index
-        // obj.amount === item.amount + obj.amount
     );
 
     useEffect(() => {
         setCart(filtredCart)
     }, [setCart])
 
-    console.log(filtredCart, "this is filtred cart ");
-
     return filtredCart.length > 0 ? (
-		<article>
+		<div className="cart-article">
 			{cart.map((item) => (
 				<div className="cart_box" key={item.id}>
 					<div className="cart_img">
@@ -61,7 +54,7 @@ const Cart = ({ cart, setCart, handleChange }) => {
 				<span>Total Price of your Cart</span>
 				<span>BGN - {price.toFixed(2)}</span>
 			</div>
-		</article>
+		</div>
 	) : (
 		<div className="cart-no-products">
 			<h2>There are no products in your cart.</h2>

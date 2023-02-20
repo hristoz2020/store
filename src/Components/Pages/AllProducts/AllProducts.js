@@ -3,7 +3,7 @@ import * as ProductServices from "../../../services/productServices";
 import CardContainer from "../../CardContainer/CardContainer";
 import Loader from "../../Loader/Loader";
 
-const AllProducts = ({token, handleClick }) => {
+const AllProducts = ({token, handleClick, cart }) => {
 	const [products, setProducts] = useState([]);
 	const [sortBy, setSortBy] = useState("desc");
 	const [loading, setLoading] = useState(true);
@@ -29,6 +29,7 @@ const AllProducts = ({token, handleClick }) => {
 	}
 
 	let filtredProducts = products.filter((product) => product.title.toLowerCase().includes(searchInput.toLowerCase()));
+	
 	return (
 		<div className="all-products-page">
 			{loading ? (
@@ -59,6 +60,7 @@ const AllProducts = ({token, handleClick }) => {
 									detailsBtn={x}
 									addToCartBtn={token}
 									handleClick={handleClick}
+									cart={cart}
 								/>
 							))
 						) : (

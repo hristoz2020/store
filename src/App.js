@@ -16,11 +16,24 @@ function App() {
 	const [token, setToken] = useState(
 		localStorage.getItem("userToken") ?? null
 		);
-	
-		
-	const handleClick = (item) => {
-		if (cart.indexOf(item) !== -1) return;
-		setCart([...cart, item]);
+
+
+	const handleClick = (e, item) => {
+		let id = item.id;
+
+		if(e.target.innerHTML === 'Add to cart') {
+			if (cart.indexOf(item) !== -1){
+				return;
+			} 
+			setCart([...cart, item]);
+
+			e.target.innerHTML = 'Remove';
+		} else if (e.target.innerHTML === 'Remove') {
+				const arr = cart.filter((item) => item.id !== id);
+				setCart(arr);
+
+				e.target.innerHTML = 'Add to cart';
+		}
 	};
 	
 	const handleChange = (item, d) => {
@@ -43,6 +56,7 @@ function App() {
 					element={
 						<AllProducts
 							token={token}
+							cart={cart}
 							setCart={setCart}
 							handleClick={handleClick}
 						/>
@@ -56,6 +70,7 @@ function App() {
 							token={token}
 							setCart={setCart}
 							handleClick={handleClick}
+							cart={cart}
 						/>
 					}
 				/>

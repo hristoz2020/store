@@ -1,13 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick }) => {
-	let productTitle = '';
+const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick, cart }) => {
+	const [btn, setBtn] = useState('Add to cart');
 
-	if(product.title.length > 35) {
-		productTitle = product.title.slice(0, 35).concat('...');
-	} else {
-		productTitle = product.title;
-	}
+	const checkbtn = btn === 'Add to cart' ? 'Remove' : 'Add to cart';
+
+	let productTitle = '';
+	
+	product.title.length > 35
+		? productTitle = product.title.slice(0, 35).concat('...')
+		: productTitle = product.title;
+		
+
+	useEffect(() => {
+		cart.map(x => x.id).includes(product.id) ? setBtn('Remove') : setBtn('Add to cart')
+	}, []);
 
 	return (
 		<li className="card-container">
@@ -30,12 +38,13 @@ const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick }) => {
 					)}
 					{addToCartBtn ? (
 						<button
-							onClick={() => {
-								handleClick(product);
+							onClick={(e) => {
+								handleClick(e, product);
+								setBtn(checkbtn);
 							}}
 							className="add-to-cart-btn"
 						>
-							Add to cart
+							{btn}
 						</button>
 					) : (
 						""
