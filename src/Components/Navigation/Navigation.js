@@ -26,7 +26,7 @@ const Navigation = ({ token, setToken, size }) => {
 		<>
 			<div className="cart">
 				<Link to="/cart" className="nav-btn">
-					Cart
+					<i class="fa-solid fa-cart-shopping"></i>
 				</Link>
 				<span>{size}</span>
 			</div>

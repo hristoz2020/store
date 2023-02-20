@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 
 const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick }) => {
-	
+	let productTitle = '';
+
+	if(product.title.length > 35) {
+		productTitle = product.title.slice(0, 35).concat('...');
+	} else {
+		productTitle = product.title;
+	}
 
 	return (
 		<li className="card-container">
 			<img className="product-img" src={product.image} alt="product" />
-			<h3 className="product-title">{product.title}</h3>
+			<h3 className="product-title">{productTitle}</h3>
 			<p className="product-category">{product.category}</p>
 			<p className="product-price">{product.price} BGN</p>
 			{
