@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick, cart }) => {
 	const [btn, setBtn] = useState('Add to cart');
 
-	const checkbtn = btn === 'Add to cart' ? 'Remove' : 'Add to cart';
-
 	let productTitle = '';
 	
 	product.title.length > 35
@@ -15,7 +13,7 @@ const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick, cart })
 
 	useEffect(() => {
 		cart.map(x => x.id).includes(product.id) ? setBtn('Remove') : setBtn('Add to cart')
-	}, []);
+	}, [cart, product.id]);
 
 	return (
 		<li className="card-container">
@@ -40,7 +38,6 @@ const CardContainer = ({ product, detailsBtn, addToCartBtn, handleClick, cart })
 						<button
 							onClick={(e) => {
 								handleClick(e, product);
-								setBtn(checkbtn);
 							}}
 							className="add-to-cart-btn"
 						>

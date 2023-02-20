@@ -50,7 +50,7 @@ function App() {
 			<Navigation token={token} setToken={setToken} size={cart.length} />
 
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route path="/" element={<Home cart={cart} />} />
 				<Route
 					path="/all-products"
 					element={

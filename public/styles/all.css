@@ -137,15 +137,31 @@ body {
     margin: 10px 0;
 }
 
+.details-card-rating {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.fa-star {
+    color: #ffc800;
+}
+
 .details-card-price {
     font-weight: 700;
     margin: 20px 0;
 }
 
 .details-card-description {
+    border-bottom: 1px solid black;
     font-size: 1.25rem;
     line-height: 1.5;
     font-weight: 300;
+}
+
+.details-cart-back-btn {
+    float: right;
+    margin: 15px 0px;
+    text-decoration: none;
 }
 
 .loader {
@@ -284,14 +300,19 @@ body {
     right: 15px;
 }
 
-.cart-article {
+.cart-box-item {
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+.cart_box {
     width: 75%;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .cart_box img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
 }
 
 .cart_img {
@@ -308,21 +329,33 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
-    border: 2px solid black;
     padding-bottom: 5px;
 }
 
-.cart_box div:nth-child(2) button {
+.cart-amount {    
     padding: 5px 10px;
+    margin-right: 5px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.cart-add {
+    border-radius: 100%;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    padding: 2px 10px;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-right: 5px;
 }
 
+.fa-trash {
+    font-size: 1.6rem;
+}
+
 .cart_box div:nth-child(3) button {
     padding: 5px 10px;
-    font-weight: bold;
-    letter-spacing: 2px;
     border: 1px solid black;
     border-radius: 5px;
     color: black;
@@ -331,7 +364,7 @@ body {
 }
 
 .cart_box div:nth-child(3) button:hover {
-    background-color: darkseagreen;
+    background-color: red;
 }
 
 .cart_box div:nth-child(3) span {
@@ -344,6 +377,8 @@ body {
 .total {
     display: flex;
     justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .total span:nth-child(1) {

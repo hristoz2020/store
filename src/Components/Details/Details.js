@@ -32,10 +32,14 @@ const Details = () => {
 					<div className="details-card-info">
 						<h4 className="details-card-category">{product.category}</h4>
 						<h2 className="details-card-title">{product.title}</h2>
-						<p className="details-card-rating">Rating: {product?.rating?.rate}</p>
-						<h3 className="details-card-price">{product.price}BGN</h3>
+						<p className="details-card-rating">
+							Rating: {product?.rating?.rate}
+							<i className="fa-solid fa-star"></i>
+							({product?.rating?.count})
+						</p>
+						<h3 className="details-card-price">{(product.price)}BGN</h3>
 						<p className="details-card-description">{product.description}</p>
-						<Link to={'/all-products'} className='details-btn'>
+						<Link to={'/all-products'} className='add-to-cart-btn details-cart-back-btn'>
 							Back to products
 						</Link>
 					</div>

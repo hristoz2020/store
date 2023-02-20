@@ -20,38 +20,32 @@ const Cart = ({ cart, setCart, handleChange }) => {
 	useEffect(() => {
 		handlePrice();
 	});
-   
-	const filtredCart = cart.filter(
-        (obj, index) => cart.findIndex(item => item.id === obj.id) === index
-    );
 
-    useEffect(() => {
-        setCart(filtredCart)
-    }, [setCart])
-
-    return filtredCart.length > 0 ? (
+    return cart.length > 0 ? (
 		<div className="cart-article">
 			{cart.map((item) => (
-				<div className="cart_box" key={item.id}>
-					<div className="cart_img">
-						<img src={item.image} alt="product" />
-						<p>{item.title}</p>
-					</div>
-					<div>
-						<button onClick={() => handleChange(item, 1)}>+</button>
-						<button>{item.amount}</button>
-						<button onClick={() => handleChange(item, -1)}>-</button>
-					</div>
-					<div>
-						<span>{item.price}</span>
-						<button onClick={() => handleRemove(item.id)}>
-							Remove
-						</button>
+				<div className="cart-box-item" key={item.id}>
+					<div className="cart_box">
+						<div className="cart_img">
+							<img src={item.image} alt="product" />
+							<p>{item.title}</p>
+						</div>
+						<div>
+							<button onClick={() => handleChange(item, 1)} className="cart-add">+</button>
+							<button className="cart-amount">{item.amount}</button>
+							<button onClick={() => handleChange(item, -1)} className="cart-add">-</button>
+						</div>
+						<div>
+							<span>{item.price}</span>
+							<button onClick={() => handleRemove(item.id)}>
+								<i className="fa-solid fa-trash"></i>
+							</button>
+						</div>
 					</div>
 				</div>
 			))}
 			<div className="total">
-				<span>Total Price of your Cart</span>
+				<span>Total Price of your Cart:</span>
 				<span>BGN - {price.toFixed(2)}</span>
 			</div>
 		</div>
