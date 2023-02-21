@@ -374,9 +374,9 @@ body {
 
 .total {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     width: 75%;
-    margin: 0 auto;
+    margin: 15px auto;
 }
 
 .total span:nth-child(1) {
@@ -384,6 +384,7 @@ body {
     color: black;
     font-weight: bold;
     letter-spacing: 2px;
+    padding-right: 10px;
 }
 
 .total span:nth-child(2) {
