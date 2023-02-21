@@ -31,9 +31,9 @@ const Cart = ({ cart, setCart, handleChange }) => {
 							<p>{item.title}</p>
 						</div>
 						<div>
-							<button onClick={() => handleChange(item, 1)} className="cart-add">+</button>
+							<button onClick={() => handleChange(item, 1)} className="cart-add"><i className="fa-solid fa-plus"></i></button>
 							<button className="cart-amount">{item.amount}</button>
-							<button onClick={() => handleChange(item, -1)} className="cart-add">-</button>
+							<button onClick={() => handleChange(item, -1)} className="cart-add"><i className="fa-solid fa-minus"></i></button>
 						</div>
 						<div>
 							<span>{item.price}</span>
@@ -45,8 +45,8 @@ const Cart = ({ cart, setCart, handleChange }) => {
 				</div>
 			))}
 			<div className="total">
-				<span>Total Price of your Cart:</span>
-				<span>BGN - {price.toFixed(2)}</span>
+				<span>Total Price:</span>
+				<span>BGN {price.toFixed(2)}</span>
 			</div>
 		</div>
 	) : (
