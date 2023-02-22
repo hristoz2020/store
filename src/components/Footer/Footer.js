@@ -3,7 +3,7 @@ const Footer = () => {
 		<footer>
 			<ul>
 				<li>
-                    <h2>© All rights reserved.</h2>
+                    <h2>© All rights reserved</h2>
                 </li>
 				<li>
 					<a href="https://github.com/hristoz2020">
