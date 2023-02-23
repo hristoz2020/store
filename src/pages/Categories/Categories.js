@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import * as ProductServices from "../../../services/productServices";
-import CategoriesContainer from "../../CategoriesContainer/CategoriesContainer";
-import CardContainer from "../../CardContainer/CardContainer";
-import Loader from "../../Loader/Loader";
+import * as ProductServices from "../../services/productServices";
+import CategoriesContainer from "../../components/CategoriesContainer/CategoriesContainer";
+import CardContainer from "../../components/CardContainer/CardContainer";
+import Loader from "../../components/Loader/Loader";
 
 const Categories = ({token, handleClick, cart}) => {
 	const [category, setCategories] = useState([]);

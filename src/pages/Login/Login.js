@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import Loader from "../../Loader/Loader";
+import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
 const Login = ({ token, setToken }) => {
 	const navigate = useNavigate();
@@ -29,13 +29,13 @@ const Login = ({ token, setToken }) => {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				setLoading(true);
 				setToken(res.token);
 				localStorage.setItem("userToken", res.token);
 				navigate("/");
 			})
 			.catch((err) => {
-				setError("username or password is incorrect");
+				setLoading(false);
+				setError("Username or Password is incorrect!");
 				console.log(err);
 			});
 	};
@@ -63,16 +63,25 @@ const Login = ({ token, setToken }) => {
 				type="password"
 				placeholder="Password"
 			/>
+			{error ? (
+				<p className="invalid-input">Invalid Username or password!</p>
+			) : (
+				""
+			)}
 			<div>
-				{loading ? <Loader /> : <small>{error}</small>}
-				<button
-					onClick={(e) => {
-						loginHandler(e);
-					}}
-					className="form-button"
-				>
-					Login
-				</button>
+				{loading ? (
+					<LoadingButton />
+				) : (
+					<button
+						onClick={(e) => {
+							setLoading(true);
+							loginHandler(e);
+						}}
+						className="form-button"
+					>
+						Login
+					</button>
+				)}
 			</div>
 		</form>
 	);

@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navigation from "./components/Navigation/Navigation";
-import Home from "./components/Pages/Home/Home";
-import AllProducts from "./components/Pages/AllProducts/AllProducts";
-import Categories from "./components/Pages/Categories/Categories";
+import Home from "./pages/Home/Home";
+import AllProducts from "./pages/AllProducts/AllProducts";
+import Categories from "./pages/Categories/Categories";
 import Details from "./components/Details/Details";
-import Cart from "./components/Pages/Cart/Cart";
-import Login from "./components/Pages/Login/Login";
-import Register from "./components/Pages/Register/Register";
+import Cart from "./pages/Cart/Cart";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Footer from "./components/Footer/Footer";
 
 function App() {

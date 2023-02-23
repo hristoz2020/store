@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import * as ProductServices from "../../../services/productServices";
-import CardContainer from "../../CardContainer/CardContainer";
-import Loader from "../../Loader/Loader";
+import * as ProductServices from "../../services/productServices";
+import CardContainer from "../../components/CardContainer/CardContainer";
+import Loader from "../../components/Loader/Loader";
 
 const AllProducts = ({token, handleClick, cart }) => {
 	const [products, setProducts] = useState([]);

@@ -437,3 +437,7 @@ footer ul li a {
     height: 26px;
     margin-top: 4px;
 }
+
+.invalid-input {
+    color: red;
+}
