@@ -1,41 +1,32 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import { loginUser } from "../../services/loginAuth";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
 
-const Login = ({ token, setToken }) => {
+const Login = ({ setToken }) => {
 	const navigate = useNavigate();
 	const [usernameInput, setUsernameInput] = useState("mor_2314");
 	const [passwordInput, setPasswordInput] = useState("83r5^_");
-	const [error, setError] = useState("");
-	const [loading, setLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	const loginHandler = (e) => {
 		e.preventDefault();
 
-		setError("");
+		setErrorMessage("");
 		setUsernameInput("");
 		setPasswordInput("");
 
-		fetch("https://fakestoreapi.com/auth/login", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				username: usernameInput,
-				password: passwordInput,
-			}),
-		})
-			.then((res) => res.json())
+		loginUser(usernameInput, passwordInput)
 			.then((res) => {
 				setToken(res.token);
 				localStorage.setItem("userToken", res.token);
 				navigate("/");
 			})
 			.catch((err) => {
-				setLoading(false);
-				setError("Username or Password is incorrect!");
+				setIsLoading(false);
+				setErrorMessage("Username or Password is incorrect!");
 				console.log(err);
 			});
 	};
@@ -63,18 +54,18 @@ const Login = ({ token, setToken }) => {
 				type="password"
 				placeholder="Password"
 			/>
-			{error ? (
+			{errorMessage ? (
 				<p className="invalid-input">Invalid Username or password!</p>
 			) : (
 				""
 			)}
 			<div>
-				{loading ? (
+				{isLoading ? (
 					<LoadingButton />
 				) : (
 					<button
 						onClick={(e) => {
-							setLoading(true);
+							setIsLoading(true);
 							loginHandler(e);
 						}}
 						className="form-button"

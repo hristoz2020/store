@@ -1,41 +1,43 @@
 import { useState, useEffect } from "react";
-import * as ProductServices from "../../services/productServices";
+import { getAllCategories, getProductByCategories } from "../../services/productServices";
 import CategoriesContainer from "../../components/CategoriesContainer/CategoriesContainer";
 import CardContainer from "../../components/CardContainer/CardContainer";
 import Loader from "../../components/Loader/Loader";
 
 const Categories = ({token, handleClick, cart}) => {
-	const [category, setCategories] = useState([]);
+	const [categories, setCategories] = useState([]);
 	const [products, setProducts] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState("electronics");
-	const [loading, setLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
+
 
 	useEffect(() => {
-		ProductServices.getAllCategories()
+		if (categories.length <= 0) {
+			getAllCategories()
 			.then((res) => {
-				setLoading(false);
+				setIsLoading(false);
 				setCategories(res);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+		}
 
-	useEffect(() => {
-		ProductServices.getProductByCategories(selectedCategory)
+		getProductByCategories(selectedCategory)
 			.then((result) => {
-				setLoading(false);
+				setIsLoading(false);
 				setProducts(result);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, [selectedCategory]);
+	}, [selectedCategory, categories.length]);
+	
 	products.map(x => x.amount = 1);
 	
 	return (
 		<div className="categories-page">
-			{loading ? (
+			{isLoading ? (
 				<Loader />
 			) : (
 				<>
@@ -44,7 +46,7 @@ const Categories = ({token, handleClick, cart}) => {
 						<h3>Category:</h3>
 						<label>
 							<select onChange={(e) => {setSelectedCategory(e.target.value)}}>
-								{category.map((x) => (
+								{categories.map((x) => (
 									<CategoriesContainer key={x} category={x} />
 								))}
 							</select>

@@ -90,7 +90,7 @@ function App() {
 						<Route
 							path="/login"
 							element={
-								<Login token={token} setToken={setToken} />
+								<Login setToken={setToken} />
 							}
 						/>
 						<Route path="/register" element={<Register />} />

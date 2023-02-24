@@ -12,7 +12,7 @@ const Footer = () => {
 				</li>
                 <li>
                     <a href="https://fakestoreapi.com/">
-                        <img src="https://fakestoreapi.com/icons/logo.png" alt="icon" className="icon-fakestoreapi"></img>
+                        <img src="https://fakestoreapi.com/icons/logo.png" alt="icon" className="icon-fakestoreapi" />
                     </a>
                 </li>
 			</ul>

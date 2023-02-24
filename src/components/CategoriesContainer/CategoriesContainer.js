@@ -1,12 +1,5 @@
-
-const CategoriesContainer = ({ category }) => {
-
-
-	return (
-		<>
-			<option value={`${category}`}>{category}</option>			
-		</>
-	);
-};
+const CategoriesContainer = ({ category }) => (
+	<option value={`${category}`}>{category}</option>
+);
 
 export default CategoriesContainer;

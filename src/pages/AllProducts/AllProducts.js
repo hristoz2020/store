@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-import * as ProductServices from "../../services/productServices";
+import { getAscOrDescProducts } from "../../services/productServices";
 import CardContainer from "../../components/CardContainer/CardContainer";
 import Loader from "../../components/Loader/Loader";
 
 const AllProducts = ({token, handleClick, cart }) => {
 	const [products, setProducts] = useState([]);
 	const [sortBy, setSortBy] = useState("desc");
-	const [loading, setLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
 	const [searchInput, setSearchInput] = useState("");
 	const checkSortBy = sortBy === "desc" ? "asc" : "desc";
 
 	useEffect(() => {
-		ProductServices.getAscOrDescProducts(sortBy)
+		getAscOrDescProducts(sortBy)
 			.then((result) => {
-				setLoading(false);
+				setIsLoading(false);
 				setProducts(result);
 			})
 			.catch((err) => {
@@ -32,7 +32,7 @@ const AllProducts = ({token, handleClick, cart }) => {
 	
 	return (
 		<div className="all-products-page">
-			{loading ? (
+			{isLoading ? (
 				<Loader />
 			) : (
 				<>

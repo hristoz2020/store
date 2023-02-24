@@ -307,7 +307,11 @@ body {
 
 .cart_box {
     width: 75%;
-    margin: 0 auto;
+    margin: 5px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
 }
 
 .cart_box img {
@@ -317,19 +321,13 @@ body {
 
 .cart_img {
     display: flex;
+    align-items: center;
     width: 400px;
 }
 
 .cart_img p {
     font-weight: bold;
     margin-left: 10px;
-}
-
-.cart_box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 5px;
 }
 
 .cart-amount {    

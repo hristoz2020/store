@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import * as ProductServices from "../../services/productServices";
+import { getLimitProducts } from "../../services/productServices";
 import CardContainer from "../../components/CardContainer/CardContainer";
 import Loader from "../../components/Loader/Loader";
 
 const Home = ({user, cart}) => {
 	const [products, setProducts] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		ProductServices.getLimitProducts()
+		getLimitProducts()
 			.then((result) => {
-				setLoading(false);
+				setIsLoading(false);
 				setProducts(result);
 			})
 			.catch((err) => {
@@ -22,7 +22,7 @@ const Home = ({user, cart}) => {
 	return (
 		<>
 			<div className="home-page">
-				{loading ? (
+				{isLoading ? (
 					<Loader />
 				) : (
 					<>
