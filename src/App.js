@@ -17,7 +17,6 @@ function App() {
 		localStorage.getItem("userToken") ?? null
 		);
 
-
 	const handleClick = (e, item) => {
 		let id = item.id;
 
@@ -72,6 +71,12 @@ function App() {
 							handleClick={handleClick}
 							cart={cart}
 						/>
+					}
+				/>
+				<Route
+					path="/order"
+					element={
+						<p>Order!</p>
 					}
 				/>
 				{token ? (
