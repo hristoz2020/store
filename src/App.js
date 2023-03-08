@@ -10,6 +10,7 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Footer from "./components/Footer/Footer";
+import Order from "./pages/Order/Order";
 
 function App() {
 	const [cart, setCart] = useState([]);
@@ -76,7 +77,7 @@ function App() {
 				<Route
 					path="/order"
 					element={
-						<p>Order!</p>
+						<Order />
 					}
 				/>
 				{token ? (

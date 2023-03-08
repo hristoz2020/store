@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -316,11 +317,10 @@ body {
 }
 
 .cart_box {
-    margin: 5px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 10px;
     background-color: white;
 }
 
@@ -332,7 +332,7 @@ body {
 .cart_img {
     display: flex;
     align-items: center;
-    width: 500px;
+    width: 35%;
 }
 
 .cart_img p {
@@ -340,7 +340,7 @@ body {
     margin-left: 10px;
 }
 
-.cart-amount {    
+.cart-amount {
     padding: 5px 10px;
     margin-right: 5px;
     border: 1px solid black;
@@ -359,7 +359,7 @@ body {
 
 .right-cart-box {
     width: 30%;
-    min-height: 350px;
+    height: 350px;
     margin: 20px 15px;
     border: 1px solid black;
     background-color: white;
@@ -387,6 +387,7 @@ body {
 .cart-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 5px auto;
     width: 90%;
 }
@@ -399,7 +400,7 @@ body {
     padding: 10px;
     border: 1px solid black;
     border-radius: 24px;
-    background: linear-gradient(90deg,#ff640e,#ff3000);
+    background: linear-gradient(90deg, #ff640e, #ff3000);
     font-size: 24px;
     color: white;
     text-decoration: none;
@@ -445,6 +446,7 @@ footer {
     width: 100%;
     padding: 10px;
     border-top: 1px solid black;
+    background-color: white;
 }
 
 footer ul {
@@ -466,8 +468,8 @@ footer ul li a {
 .fa-brands {
     font-size: 30px;
     color: black;
-} 
- 
+}
+
 .icon-fakestoreapi {
     height: 26px;
     margin-top: 4px;
