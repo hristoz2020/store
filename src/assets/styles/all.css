@@ -19,7 +19,6 @@ body {
     display: flex;
     border-bottom: 1px solid black;
     background-color: white;
-    padding: 10px;
 }
 
 .navigation-left,
@@ -209,6 +208,10 @@ body {
     padding: 10px;
 }
 
+.all-products-page {
+    padding-bottom: 50px;
+}
+
 .all-products-sort-item>button {
     margin: 10px;
     padding: 8px 20px;
@@ -226,7 +229,7 @@ body {
     text-align: center;
     border-radius: 12px;
     margin: 50px auto;
-    padding: 50px 20px;
+    padding: 26px 0px;
     width: 30%;
 }
 
@@ -429,7 +432,7 @@ body {
     margin-right: 10px;
 }
 
-.home-page,
+/* .home-page,
 .all-products-page,
 .categories-page,
 .login-form,
@@ -437,12 +440,11 @@ body {
 .cart-article {
     padding-bottom: 100px;
     height: 100%;
-}
+} */
 
 footer {
     position: absolute;
     bottom: 0;
-    margin: 10% 0px 0px 0px;
     width: 100%;
     padding: 10px;
     border-top: 1px solid black;
