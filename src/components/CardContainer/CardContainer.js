@@ -11,8 +11,8 @@ const CardContainer = ({
 	const [btn, setBtn] = useState("Add to cart");
 
 	let productTitle =
-		product.title.length > 35
-			? product.title.slice(0, 35).concat("...")
+		product.title.length > 31
+			? product.title.slice(0, 31).concat("...")
 			: product.title;
 
 	useEffect(() => {
