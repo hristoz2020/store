@@ -3,25 +3,25 @@ import { useState } from "react";
 const Register = () => {
 	const [isError, setIsError] = useState(false);
 	const [registerData, setRegisterData] = useState({
-		email: '',
-		username: '',
-		password: '',
+		email: "",
+		username: "",
+		password: "",
 		name: {
-			firstname: '',
-			lastname: '',
+			firstname: "",
+			lastname: "",
 		},
 		address: {
-			city: '',
-			street: '',
-			number: '',
-			zipcode: '',
+			city: "",
+			street: "",
+			number: "",
+			zipcode: "",
 			geolocation: {
-				lat: '',
-				long: '',
+				lat: "",
+				long: "",
 			},
 		},
-		phone: '',
-	})
+		phone: "",
+	});
 
 	const registerHandler = (e) => {
 		e.preventDefault();
@@ -29,12 +29,12 @@ const Register = () => {
 		fetch("https://fakestoreapi.com/users", {
 			method: "POST",
 			body: JSON.stringify({
-				registerData
+				registerData,
 			}),
 		})
 			.then((res) => res.json())
 			.then((json) => console.log(json))
-			.catch(err => setIsError(true))
+			.catch((err) => setIsError(true));
 	};
 
 	return (
@@ -77,7 +77,7 @@ const Register = () => {
 					onChange={(e) => {
 						setRegisterData.name.firstname(e.target.value);
 					}}
-				className="form-input"
+					className="form-input"
 					type="text"
 					placeholder="Firest Name"
 				/>
@@ -87,7 +87,7 @@ const Register = () => {
 					onChange={(e) => {
 						setRegisterData.name.lastname(e.target.value);
 					}}
-				className="form-input"
+					className="form-input"
 					type="text"
 					placeholder="Last Name"
 				/>
@@ -168,6 +168,7 @@ const Register = () => {
 					onClick={(e) => {
 						registerHandler(e);
 					}}
+					className="form-button"
 				>
 					Register
 				</button>
