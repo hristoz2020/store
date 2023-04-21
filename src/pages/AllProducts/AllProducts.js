@@ -1,40 +1,37 @@
-import { useState, useEffect } from "react";
-import { getAscOrDescProducts } from "../../services/productServices";
+import { useState, useContext } from "react";
 import CardContainer from "../../components/CardContainer/CardContainer";
 import Loader from "../../components/Loader/Loader";
 
-const AllProducts = ({token, handleClick, cart }) => {
-	const [products, setProducts] = useState([]);
+import { ProductContext } from "../../contexts/ProductContext";
+
+const AllProducts = ({ token, handleClick, cart }) => {
 	const [sortBy, setSortBy] = useState("desc");
-	const [isLoading, setIsLoading] = useState(true);
 	const [searchInput, setSearchInput] = useState("");
 	const checkSortBy = sortBy === "desc" ? "asc" : "desc";
 
-	useEffect(() => {
-		getAscOrDescProducts(sortBy)
-			.then((result) => {
-				setIsLoading(false);
-				setProducts(result);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, [sortBy]);
+	const { products, reversedProducts } = useContext(ProductContext);
 
 	products.map((x) => (x.amount = 1));
-	
+
 	function onSearch(e) {
 		e.preventDefault();
 		setSearchInput(e.target.value);
 	}
+	let chekedProducts = null;
+	if (sortBy === "asc") {
+		chekedProducts = reversedProducts;
+	} else if (sortBy === "desc") {
+		chekedProducts = products;
+	}
 
-	let filtredProducts = products.filter((product) => product.title.toLowerCase().includes(searchInput.toLowerCase()));
-	
+	let filtredProducts = chekedProducts.filter((product) =>
+		product.title.toLowerCase().includes(searchInput.toLowerCase())
+	);
+
 	return (
 		<div className="all-products-page">
-			{isLoading ? (
-				<Loader />
-			) : (
+			{products.length < 1 && <Loader />}
+			{products.length > 0 && (
 				<>
 					<h1>All Products</h1>
 					<div className="all-products-sort-item">
