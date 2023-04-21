@@ -12,100 +12,103 @@ import Register from "./pages/Register/Register";
 import Footer from "./components/Footer/Footer";
 import Order from "./pages/Order/Order";
 
+import { AllProductsContext } from "./contexts/ProductContext";
+
 function App() {
 	const [cart, setCart] = useState([]);
 	const [token, setToken] = useState(
 		localStorage.getItem("userToken") ?? null
-		);
+	);
 
 	const handleClick = (e, item) => {
 		let id = item.id;
 
-		if(e.target.innerHTML === 'Add to cart') {
-			if (cart.indexOf(item) !== -1){
+		if (e.target.innerHTML === "Add to cart") {
+			if (cart.indexOf(item) !== -1) {
 				return;
-			} 
+			}
 			setCart([...cart, item]);
 
-			e.target.innerHTML = 'Remove';
-		} else if (e.target.innerHTML === 'Remove') {
-				const arr = cart.filter((item) => item.id !== id);
-				setCart(arr);
+			e.target.innerHTML = "Remove";
+		} else if (e.target.innerHTML === "Remove") {
+			const arr = cart.filter((item) => item.id !== id);
+			setCart(arr);
 
-				e.target.innerHTML = 'Add to cart';
+			e.target.innerHTML = "Add to cart";
 		}
 	};
-	
+
 	const handleChange = (item, d) => {
 		const ind = cart.indexOf(item);
 		const arr = cart;
 		arr[ind].amount += d;
-		
+
 		if (arr[ind].amount === 0) arr[ind].amount = 1;
 		setCart([...arr]);
 	};
-	
-	return (
-		<div className="store">
-			<Navigation token={token} setToken={setToken} size={cart.length} />
 
-			<Routes>
-				<Route path="/" element={<Home cart={cart} />} />
-				<Route
-					path="/all-products"
-					element={
-						<AllProducts
-							token={token}
-							cart={cart}
-							setCart={setCart}
-							handleClick={handleClick}
-						/>
-					}
+	return (
+		<AllProductsContext>
+			<div className="store">
+				<Navigation
+					token={token}
+					setToken={setToken}
+					size={cart.length}
 				/>
-				<Route path="/all-products/details/:id" element={<Details />} />
-				<Route
-					path="/categories"
-					element={
-						<Categories
-							token={token}
-							setCart={setCart}
-							handleClick={handleClick}
-							cart={cart}
-						/>
-					}
-				/>
-				<Route
-					path="/order"
-					element={
-						<Order />
-					}
-				/>
-				{token ? (
+
+				<Routes>
+					<Route path="/" element={<Home cart={cart} />} />
 					<Route
-						path="/cart"
+						path="/all-products"
 						element={
-							<Cart
+							<AllProducts
+								token={token}
 								cart={cart}
 								setCart={setCart}
-								handleChange={handleChange}
+								handleClick={handleClick}
 							/>
 						}
 					/>
-				) : (
-					<>
+					<Route
+						path="/all-products/details/:id"
+						element={<Details />}
+					/>
+					<Route
+						path="/categories"
+						element={
+							<Categories
+								token={token}
+								setCart={setCart}
+								handleClick={handleClick}
+								cart={cart}
+							/>
+						}
+					/>
+					<Route path="/order" element={<Order />} />
+					{token ? (
 						<Route
-							path="/login"
+							path="/cart"
 							element={
-								<Login setToken={setToken} />
+								<Cart
+									cart={cart}
+									setCart={setCart}
+									handleChange={handleChange}
+								/>
 							}
 						/>
-						<Route path="/register" element={<Register />} />
-					</>
-				)}
-			</Routes>
-
-			<Footer />
-		</div>
+					) : (
+						<>
+							<Route
+								path="/login"
+								element={<Login setToken={setToken} />}
+							/>
+							<Route path="/register" element={<Register />} />
+						</>
+					)}
+				</Routes>
+				<Footer />
+			</div>
+		</AllProductsContext>
 	);
 }
 
