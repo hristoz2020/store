@@ -17,7 +17,6 @@ import { AllProductsContext } from "./contexts/ProductContext";
 function App() {
 	const [cart, setCart] = useState([]);
 
-
 	const handleClick = (e, item) => {
 		let id = item.id;
 
@@ -36,21 +35,10 @@ function App() {
 		}
 	};
 
-	const handleChange = (item, d) => {
-		const ind = cart.indexOf(item);
-		const arr = cart;
-		arr[ind].amount += d;
-
-		if (arr[ind].amount === 0) arr[ind].amount = 1;
-		setCart([...arr]);
-	};
-
 	return (
 		<AllProductsContext>
 			<div className="store">
-				<Navigation
-					size={cart.length}
-				/>
+				<Navigation size={cart.length} />
 
 				<Routes>
 					<Route path="/" element={<Home cart={cart} />} />
@@ -79,23 +67,19 @@ function App() {
 						}
 					/>
 					<Route path="/order" element={<Order />} />
-					{localStorage.getItem('userToken') ? (
+					{localStorage.getItem("userToken") ? (
 						<Route
 							path="/cart"
 							element={
 								<Cart
 									cart={cart}
 									setCart={setCart}
-									handleChange={handleChange}
 								/>
 							}
 						/>
 					) : (
 						<>
-							<Route
-								path="/login"
-								element={<Login />}
-							/>
+							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 						</>
 					)}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import CartItem from "../../components/CartItem/CartItem";
 
-const Cart = ({ cart, setCart, handleChange }) => {
+const Cart = ({ cart, setCart }) => {
 	const [price, setPrice] = useState(0);
 
 	let shopingFee = price * 0.05;
@@ -32,7 +32,8 @@ const Cart = ({ cart, setCart, handleChange }) => {
 					<CartItem
 						key={item.id}
 						item={item}
-						handleChange={handleChange}
+						cart={cart}
+						setCart={setCart}
 						handleRemove={handleRemove}
 					/>
 				))}

@@ -1,5 +1,12 @@
-const CartItem = ({item, handleChange, handleRemove}) => {
+const CartItem = ({item, cart, setCart, handleRemove}) => {
+	const handleChange = (item, d) => {
+		const ind = cart.indexOf(item);
+		const arr = cart;
+		arr[ind].amount += d;
 
+		if (arr[ind].amount === 0) arr[ind].amount = 1;
+		setCart([...arr]);
+	};
 	return (
 		<div className="cart-box-item" key={item.id}>
 			<div className="cart_box">
