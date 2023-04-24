@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState, useMemo } from "react";
 import {
 	getAllProducts,
-    getAscOrDescProducts,
+	getAscOrDescProducts,
 	getLimitProducts,
 	getAllCategories,
 } from "../services/productServices";
@@ -13,12 +13,18 @@ const checkLocalStorage = (name) =>
 
 export const AllProductsContext = ({ children }) => {
 	const [products, setProducts] = useState(checkLocalStorage("products"));
-	const [reversedProducts, setReversedProducts] = useState(checkLocalStorage("reversedProducts"));
+	const [reversedProducts, setReversedProducts] = useState(
+		checkLocalStorage("reversedProducts")
+	);
 	const [limitProducts, setLimitProducts] = useState(
 		checkLocalStorage("limitProducts")
 	);
 	const [categories, setCategories] = useState(
 		checkLocalStorage("categories")
+	);
+
+	const [token, setToken] = useState(
+		localStorage.getItem("userToken") ?? null
 	);
 
 	useEffect(() => {
@@ -28,7 +34,7 @@ export const AllProductsContext = ({ children }) => {
 		});
 	}, []);
 
-    useEffect(() => {
+	useEffect(() => {
 		getAscOrDescProducts("desc").then((res) => {
 			setReversedProducts(res);
 			localStorage.setItem("reversedProducts", JSON.stringify(res));
@@ -50,8 +56,15 @@ export const AllProductsContext = ({ children }) => {
 	}, []);
 
 	const value = useMemo(
-		() => ({ limitProducts, categories, products, reversedProducts }),
-		[limitProducts, categories, products, reversedProducts]
+		() => ({
+			limitProducts,
+			categories,
+			products,
+			reversedProducts,
+			token,
+			setToken,
+		}),
+		[limitProducts, categories, products, reversedProducts, token, setToken]
 	);
 
 	return (

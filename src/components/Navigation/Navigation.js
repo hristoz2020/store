@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../../contexts/ProductContext";
 
-const Navigation = ({ token, setToken, size }) => {
+const Navigation = ({ size }) => {
 	const navigate = useNavigate();
+	const { token, setToken } = useContext(ProductContext);
 
 	const logOutHandler = () => {
-		setToken("");
-		localStorage.clear();
-		navigate("/login");
+		setToken(null);
+		localStorage.removeItem("userToken");
+		navigate("/");
 	};
 
 	const guestNav = (

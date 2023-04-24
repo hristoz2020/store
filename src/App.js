@@ -16,9 +16,7 @@ import { AllProductsContext } from "./contexts/ProductContext";
 
 function App() {
 	const [cart, setCart] = useState([]);
-	const [token, setToken] = useState(
-		localStorage.getItem("userToken") ?? null
-	);
+
 
 	const handleClick = (e, item) => {
 		let id = item.id;
@@ -51,8 +49,6 @@ function App() {
 		<AllProductsContext>
 			<div className="store">
 				<Navigation
-					token={token}
-					setToken={setToken}
 					size={cart.length}
 				/>
 
@@ -62,7 +58,6 @@ function App() {
 						path="/all-products"
 						element={
 							<AllProducts
-								token={token}
 								cart={cart}
 								setCart={setCart}
 								handleClick={handleClick}
@@ -77,7 +72,6 @@ function App() {
 						path="/categories"
 						element={
 							<Categories
-								token={token}
 								setCart={setCart}
 								handleClick={handleClick}
 								cart={cart}
@@ -85,7 +79,7 @@ function App() {
 						}
 					/>
 					<Route path="/order" element={<Order />} />
-					{token ? (
+					{localStorage.getItem('userToken') ? (
 						<Route
 							path="/cart"
 							element={
@@ -100,7 +94,7 @@ function App() {
 						<>
 							<Route
 								path="/login"
-								element={<Login setToken={setToken} />}
+								element={<Login />}
 							/>
 							<Route path="/register" element={<Register />} />
 						</>

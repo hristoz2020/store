@@ -5,8 +5,8 @@ import Loader from "../../components/Loader/Loader";
 
 import { ProductContext } from "../../contexts/ProductContext";
 
-const Categories = ({ token, handleClick, cart }) => {
-	const { categories, products } = useContext(ProductContext);
+const Categories = ({ handleClick, cart }) => {
+	const { token, categories, products } = useContext(ProductContext);
 	const [selectedCategory, setSelectedCategory] = useState("electronics");
 
 	const filtredProducts = products.filter(

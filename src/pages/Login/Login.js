@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { loginUser } from "../../services/loginAuth";
 import LoadingButton from "../../components/LoadingButton/LoadingButton";
+import { ProductContext } from "../../contexts/ProductContext";
 
-const Login = ({ setToken }) => {
+const Login = () => {
 	const navigate = useNavigate();
+	const { setToken } = useContext(ProductContext)
 	const [usernameInput, setUsernameInput] = useState("mor_2314");
 	const [passwordInput, setPasswordInput] = useState("83r5^_");
 	const [errorMessage, setErrorMessage] = useState("");
