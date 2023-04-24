@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navigation from "./components/Navigation/Navigation";
@@ -15,68 +14,22 @@ import Order from "./pages/Order/Order";
 import { AllProductsContext } from "./contexts/ProductContext";
 
 function App() {
-	const [cart, setCart] = useState([]);
-
-	const handleClick = (e, item) => {
-		let id = item.id;
-
-		if (e.target.innerHTML === "Add to cart") {
-			if (cart.indexOf(item) !== -1) {
-				return;
-			}
-			setCart([...cart, item]);
-
-			e.target.innerHTML = "Remove";
-		} else if (e.target.innerHTML === "Remove") {
-			const arr = cart.filter((item) => item.id !== id);
-			setCart(arr);
-
-			e.target.innerHTML = "Add to cart";
-		}
-	};
-
 	return (
 		<AllProductsContext>
 			<div className="store">
-				<Navigation size={cart.length} />
+				<Navigation />
 
 				<Routes>
-					<Route path="/" element={<Home cart={cart} />} />
-					<Route
-						path="/all-products"
-						element={
-							<AllProducts
-								cart={cart}
-								setCart={setCart}
-								handleClick={handleClick}
-							/>
-						}
-					/>
+					<Route path="/" element={<Home />} />
+					<Route path="/all-products" element={<AllProducts />} />
 					<Route
 						path="/all-products/details/:id"
 						element={<Details />}
 					/>
-					<Route
-						path="/categories"
-						element={
-							<Categories
-								setCart={setCart}
-								handleClick={handleClick}
-								cart={cart}
-							/>
-						}
-					/>
+					<Route path="/categories" element={<Categories />} />
 					<Route path="/order" element={<Order />} />
 					{localStorage.getItem("userToken") ? (
-						<Route
-							path="/cart"
-							element={
-								<Cart
-									cart={cart}
-									setCart={setCart}
-								/>
-							}
-						/>
+						<Route path="/cart" element={<Cart />} />
 					) : (
 						<>
 							<Route path="/login" element={<Login />} />

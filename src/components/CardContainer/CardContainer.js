@@ -1,13 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../contexts/ProductContext";
 
-const CardContainer = ({
-	product,
-	detailsBtn,
-	addToCartBtn,
-	handleClick,
-	cart,
-}) => {
+const CardContainer = ({ product, detailsBtn }) => {
+	const { token, cart, handleClick } = useContext(ProductContext);
 	const [btn, setBtn] = useState("Add to cart");
 
 	let productTitle =
@@ -37,14 +33,14 @@ const CardContainer = ({
 						Details
 					</Link>
 				)}
-				{addToCartBtn && (
+				{token && (
 					<button
 						onClick={(e) => {
 							handleClick(e, product);
 						}}
 						className="add-to-cart-btn"
 					>
-						{btn}
+						{btn} 
 					</button>
 				)}
 			</div>

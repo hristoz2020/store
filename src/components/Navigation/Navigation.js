@@ -2,9 +2,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContext } from "../../contexts/ProductContext";
 
-const Navigation = ({ size }) => {
+const Navigation = () => {
 	const navigate = useNavigate();
-	const { token, setToken } = useContext(ProductContext);
+	const { token, setToken, cart } = useContext(ProductContext);
 
 	const logOutHandler = () => {
 		setToken(null);
@@ -29,7 +29,7 @@ const Navigation = ({ size }) => {
 				<Link to="/cart" className="nav-btn">
 					<i className="fa-solid fa-cart-shopping"></i>
 				</Link>
-				<span>{size}</span>
+				<span>{cart.length}</span>
 			</div>
 			<button onClick={logOutHandler} className="nav-btn">
 				Logout

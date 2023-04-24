@@ -4,12 +4,12 @@ import Loader from "../../components/Loader/Loader";
 
 import { ProductContext } from "../../contexts/ProductContext";
 
-const AllProducts = ({ handleClick, cart }) => {
+const AllProducts = () => {
 	const [sortBy, setSortBy] = useState("desc");
 	const [searchInput, setSearchInput] = useState("");
 	const checkSortBy = sortBy === "desc" ? "asc" : "desc";
 
-	const { token, products, reversedProducts } = useContext(ProductContext);
+	const { products, reversedProducts } = useContext(ProductContext);
 
 	products.map((x) => (x.amount = 1));
 
@@ -55,9 +55,6 @@ const AllProducts = ({ handleClick, cart }) => {
 									key={x.id}
 									product={x}
 									detailsBtn={x}
-									addToCartBtn={token}
-									handleClick={handleClick}
-									cart={cart}
 								/>
 							))
 						) : (

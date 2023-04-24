@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useMemo } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
 	getAllProducts,
 	getAscOrDescProducts,
@@ -22,10 +22,28 @@ export const AllProductsContext = ({ children }) => {
 	const [categories, setCategories] = useState(
 		checkLocalStorage("categories")
 	);
-
 	const [token, setToken] = useState(
 		localStorage.getItem("userToken") ?? null
 	);
+	const [cart, setCart] = useState([]);
+
+	const handleClick = (e, item) => {
+		let id = item.id;
+
+		if (e.target.innerHTML === "Add to cart") {
+			if (cart.indexOf(item) !== -1) {
+				return;
+			}
+			setCart([...cart, item]);
+
+			e.target.innerHTML = "Remove";
+		} else if (e.target.innerHTML === "Remove") {
+			const arr = cart.filter((item) => item.id !== id);
+			setCart(arr);
+
+			e.target.innerHTML = "Add to cart";
+		}
+	};
 
 	useEffect(() => {
 		getAllProducts().then((res) => {
@@ -55,20 +73,20 @@ export const AllProductsContext = ({ children }) => {
 		});
 	}, []);
 
-	const value = useMemo(
-		() => ({
-			limitProducts,
-			categories,
-			products,
-			reversedProducts,
-			token,
-			setToken,
-		}),
-		[limitProducts, categories, products, reversedProducts, token, setToken]
-	);
-
 	return (
-		<ProductContext.Provider value={value}>
+		<ProductContext.Provider
+			value={{
+				limitProducts,
+				categories,
+				products,
+				reversedProducts,
+				token,
+				setToken,
+				cart,
+				setCart,
+				handleClick,
+			}}
+		>
 			{children}
 		</ProductContext.Provider>
 	);

@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { ProductContext } from "../../contexts/ProductContext";
 import CartItem from "../../components/CartItem/CartItem";
 
-const Cart = ({ cart, setCart }) => {
+const Cart = () => {
+	const { cart, setCart } = useContext(ProductContext);
 	const [price, setPrice] = useState(0);
 
 	let shopingFee = price * 0.05;

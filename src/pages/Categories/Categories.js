@@ -5,8 +5,8 @@ import Loader from "../../components/Loader/Loader";
 
 import { ProductContext } from "../../contexts/ProductContext";
 
-const Categories = ({ handleClick, cart }) => {
-	const { token, categories, products } = useContext(ProductContext);
+const Categories = () => {
+	const { categories, products } = useContext(ProductContext);
 	const [selectedCategory, setSelectedCategory] = useState("electronics");
 
 	const filtredProducts = products.filter(
@@ -36,14 +36,7 @@ const Categories = ({ handleClick, cart }) => {
 			<div>
 				<ul className="card-list">
 					{filtredProducts.map((x) => (
-						<CardContainer
-							key={x.id}
-							product={x}
-							detailsBtn={x}
-							addToCartBtn={token}
-							handleClick={handleClick}
-							cart={cart}
-						/>
+						<CardContainer key={x.id} product={x} detailsBtn={x} />
 					))}
 				</ul>
 			</div>
