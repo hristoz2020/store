@@ -14,6 +14,7 @@ const Cart = () => {
 		const arr = cart.filter((item) => item.id !== id);
 		setCart(arr);
 		handlePrice();
+		console.log('test');
 	};
 
 	const handlePrice = () => {

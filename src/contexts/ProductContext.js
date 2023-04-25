@@ -25,7 +25,7 @@ export const AllProductsContext = ({ children }) => {
 	const [token, setToken] = useState(
 		localStorage.getItem("userToken") ?? null
 	);
-	const [cart, setCart] = useState([]);
+	const [cart, setCart] = useState(checkLocalStorage("cart"));
 
 	const handleClick = (e, item) => {
 		let id = item.id;
@@ -44,6 +44,10 @@ export const AllProductsContext = ({ children }) => {
 			e.target.innerHTML = "Add to cart";
 		}
 	};
+
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(cart));
+	}, [cart]);
 
 	useEffect(() => {
 		getAllProducts().then((res) => {
