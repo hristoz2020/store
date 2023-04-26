@@ -14,7 +14,7 @@ const Cart = () => {
 		const arr = cart.filter((item) => item.id !== id);
 		setCart(arr);
 		handlePrice();
-		console.log('test');
+		console.log("test");
 	};
 
 	const handlePrice = () => {
@@ -26,7 +26,7 @@ const Cart = () => {
 	useEffect(() => {
 		handlePrice();
 	});
-	
+
 	return cart.length > 0 ? (
 		<div className="cart-article">
 			<div className="left-cart-box">
@@ -54,9 +54,8 @@ const Cart = () => {
 					<p>Total Price:</p>
 					<h2 className="cart-price">BGN {totalPrice.toFixed(2)}</h2>
 				</div>
-
 				<Link to={`/order`} state={totalPrice} className="order-btn">
-					Place order(Link)
+					Place order
 				</Link>
 			</div>
 		</div>

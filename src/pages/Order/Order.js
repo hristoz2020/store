@@ -6,17 +6,16 @@ const Order = () => {
 	const location = useLocation();
 	const data = location.state;
 	const totalPrice = data;
-	
+
 	const { setCart } = useContext(ProductContext);
 	const navigate = useNavigate();
 
 	const payment = (e) => {
 		e.preventDefault();
 		localStorage.removeItem("cart");
-		window.confirm("test");
+		window.confirm("Thank you! Your order has been received.");
 		setCart([]);
 		navigate('/');
-		console.log("order is succesfull");
 	};
 
 	return (
