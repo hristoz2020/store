@@ -28,14 +28,9 @@ function App() {
 					/>
 					<Route path="/categories" element={<Categories />} />
 					<Route path="/order" element={<Order />} />
-					{localStorage.getItem("userToken") ? (
-						<Route path="/cart" element={<Cart />} />
-					) : (
-						<>
-							<Route path="/login" element={<Login />} />
-							<Route path="/register" element={<Register />} />
-						</>
-					)}
+					<Route path="/cart" element={<Cart />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
 				</Routes>
 				<Footer />
 			</div>

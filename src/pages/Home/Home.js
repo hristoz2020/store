@@ -6,6 +6,8 @@ import Loader from "../../components/Loader/Loader";
 const Home = () => {
 	const { limitProducts } = useContext(ProductContext);
 
+	limitProducts.map((x) => (x.amount = 1));
+
 	return (
 		<>
 			<div className="home-page">

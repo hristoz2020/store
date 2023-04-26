@@ -12,6 +12,7 @@ const AllProducts = () => {
 	const { products, reversedProducts } = useContext(ProductContext);
 
 	products.map((x) => (x.amount = 1));
+	reversedProducts.map((x) => (x.amount = 1));
 
 	function onSearch(e) {
 		e.preventDefault();

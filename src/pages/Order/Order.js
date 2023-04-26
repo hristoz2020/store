@@ -1,9 +1,23 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../../contexts/ProductContext";
 
 const Order = () => {
 	const location = useLocation();
 	const data = location.state;
-	const totalPrice = data.toFixed(2);
+	const totalPrice = data;
+	
+	const { setCart } = useContext(ProductContext);
+	const navigate = useNavigate();
+
+	const payment = (e) => {
+		e.preventDefault();
+		localStorage.removeItem("cart");
+		window.confirm("test");
+		setCart([]);
+		navigate('/');
+		console.log("order is succesfull");
+	};
 
 	return (
 		<div className="wrapper">
@@ -137,14 +151,8 @@ const Order = () => {
 				</div>
 				<div className="input-group">
 					<div className="input-box">
-						<button
-							className="pay-btn"
-							onClick={(e) => {
-								e.preventDefault();
-								console.log("order is succesfull");
-							}}
-						>
-							PAY NOW {totalPrice} BGN
+						<button className="pay-btn" onClick={(e) => payment(e)}>
+							PAY NOW {totalPrice.toFixed(2)} BGN
 						</button>
 					</div>
 				</div>

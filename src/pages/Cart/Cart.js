@@ -26,14 +26,14 @@ const Cart = () => {
 	useEffect(() => {
 		handlePrice();
 	});
-
+	
 	return cart.length > 0 ? (
 		<div className="cart-article">
 			<div className="left-cart-box">
-				{cart.map((item) => (
+				{cart.map((product) => (
 					<CartItem
-						key={item.id}
-						item={item}
+						key={product.id}
+						item={product}
 						cart={cart}
 						setCart={setCart}
 						handleRemove={handleRemove}
