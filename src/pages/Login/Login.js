@@ -29,7 +29,6 @@ const Login = () => {
 			.catch((err) => {
 				setIsLoading(false);
 				setErrorMessage("Username or Password is incorrect!");
-				console.log(err);
 			});
 	};
 

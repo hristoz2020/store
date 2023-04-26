@@ -33,7 +33,6 @@ const Register = () => {
 			}),
 		})
 			.then((res) => res.json())
-			.then((json) => console.log(json))
 			.catch((err) => setIsError(true));
 	};
 
