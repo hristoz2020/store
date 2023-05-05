@@ -20,7 +20,7 @@ function App() {
 				<Navigation />
 
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/store-app" element={<Home />} />
 					<Route path="/all-products" element={<AllProducts />} />
 					<Route
 						path="/all-products/details/:id"
