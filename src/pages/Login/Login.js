@@ -24,7 +24,7 @@ const Login = () => {
 			.then((res) => {
 				setToken(res.token);
 				localStorage.setItem("userToken", res.token);
-				navigate("/");
+				navigate("/store-app");
 			})
 			.catch((err) => {
 				setIsLoading(false);

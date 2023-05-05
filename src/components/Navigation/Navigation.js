@@ -9,7 +9,7 @@ const Navigation = () => {
 	const logOutHandler = () => {
 		setToken(null);
 		localStorage.removeItem("userToken");
-		navigate("/");
+		navigate("/store-app");
 	};
 
 	const guestNav = (
@@ -40,7 +40,7 @@ const Navigation = () => {
 	return (
 		<div className="navigation">
 			<div className="navigation-left">
-				<Link to="/" className="nav-btn">
+				<Link to="store-app" className="nav-btn">
 					Home
 				</Link>
 				<Link to="/all-products" className="nav-btn">
