@@ -234,12 +234,26 @@ body {
     border: 1px solid black;
     text-align: center;
     border-radius: 12px;
-    margin: 150px auto 300px;
+    margin: 100px auto 250px;
     padding: 26px 0px;
     width: 30%;
 }
 
 .login-form>p {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.register-form {
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 12px;
+    margin: 100px auto 100px;
+    padding: 26px 0px;
+    width: 30%;
+}
+
+.register-form>p {
     padding-top: 10px;
     text-align: center;
 }
@@ -314,6 +328,7 @@ body {
     display: flex;
     justify-content: center;
     background-color: rgb(239, 239, 239);
+    min-height: 1000px;
 }
 
 .left-cart-box {

@@ -37,7 +37,7 @@ const Register = () => {
 	};
 
 	return (
-		<form className="login-form" method="POST">
+		<form className="register-form" method="POST">
 			<h3>Register</h3>
 			<p>Email</p>
 			<input
