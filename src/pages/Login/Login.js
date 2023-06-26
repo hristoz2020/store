@@ -7,7 +7,7 @@ import { ProductContext } from "../../contexts/ProductContext";
 
 const Login = () => {
 	const navigate = useNavigate();
-	const { setToken } = useContext(ProductContext)
+	const { setToken } = useContext(ProductContext);
 	const [usernameInput, setUsernameInput] = useState("mor_2314");
 	const [passwordInput, setPasswordInput] = useState("83r5^_");
 	const [errorMessage, setErrorMessage] = useState("");
@@ -33,49 +33,53 @@ const Login = () => {
 	};
 
 	return (
-		<form className="login-form" method="POST">
-			<h2>Login</h2>
-			<p>Username</p>
-			<input
-				value={usernameInput}
-				onChange={(e) => {
-					setUsernameInput(e.target.value);
-				}}
-				className="form-input"
-				type="text"
-				placeholder="Username"
-			/>
-			<p>Password</p>
-			<input
-				value={passwordInput}
-				onChange={(e) => {
-					setPasswordInput(e.target.value);
-				}}
-				className="form-input"
-				type="password"
-				placeholder="Password"
-			/>
-			{errorMessage ? (
-				<p className="invalid-input">Invalid Username or password!</p>
-			) : (
-				""
-			)}
-			<div>
-				{isLoading ? (
-					<LoadingButton />
+		<div className="login-page">
+			<form className="login-form" method="POST">
+				<h2>Login</h2>
+				<p>Username</p>
+				<input
+					value={usernameInput}
+					onChange={(e) => {
+						setUsernameInput(e.target.value);
+					}}
+					className="form-input"
+					type="text"
+					placeholder="Username"
+				/>
+				<p>Password</p>
+				<input
+					value={passwordInput}
+					onChange={(e) => {
+						setPasswordInput(e.target.value);
+					}}
+					className="form-input"
+					type="password"
+					placeholder="Password"
+				/>
+				{errorMessage ? (
+					<p className="invalid-input">
+						Invalid Username or password!
+					</p>
 				) : (
-					<button
-						onClick={(e) => {
-							setIsLoading(true);
-							loginHandler(e);
-						}}
-						className="form-button"
-					>
-						Login
-					</button>
+					""
 				)}
-			</div>
-		</form>
+				<div>
+					{isLoading ? (
+						<LoadingButton />
+					) : (
+						<button
+							onClick={(e) => {
+								setIsLoading(true);
+								loginHandler(e);
+							}}
+							className="form-button"
+						>
+							Login
+						</button>
+					)}
+				</div>
+			</form>
+		</div>
 	);
 };
 

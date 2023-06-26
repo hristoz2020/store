@@ -46,7 +46,10 @@ body {
 }
 
 .home-page,
-.categories-page {
+.categories-page,
+.login-page,
+.order-page,
+.details-page {
     min-height: 1000px;
 }
 

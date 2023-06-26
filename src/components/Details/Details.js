@@ -27,7 +27,7 @@ const Details = () => {
 	}, [productId]);
 
 	return (
-		<>
+		<div className="details-page">
 			{isLoading && <Loader />}
 			{isError && <p>Error!!</p>}
 			{isProductAvailable && (
@@ -62,7 +62,7 @@ const Details = () => {
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 
